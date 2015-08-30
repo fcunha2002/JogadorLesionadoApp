@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Jogador Lesionado</string>
+    <string name="drawer_open">Menu aberto</string>
+    <string name="drawer_close">Menu fechado</string>
+    <string name="action_settings">Configurações</string>
+    <string name="qtd_injured">jogadores lesionados</string>
+</resources>
