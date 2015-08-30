@@ -3,8 +3,8 @@ package com.fabio.jogadorlesionado;
 
 import android.graphics.drawable.Drawable;
 
-/**
- * Created by poliveira on 24/10/2014.
+/*
+ * Created by Fabio Cunha on 30/08/2015.
  */
 public class NavigationItem {
     private String mText;
