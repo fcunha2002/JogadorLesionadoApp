@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Jogador;
+import com.fabio.jogadorlesionado.negocio.ListViewJogadorAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -48,8 +49,7 @@ public class ClubeFragment extends Fragment {
         tvNomeCompl.setText(clube.getNomeCompleto());
 
         lvLesionados = (ListView) activity.findViewById(R.id.lv_lesionados);
-        jogadorAdapter = new ArrayAdapter<Jogador>(main, android.R.layout.simple_list_item_1, android.R.id.text1, clube.getLesionados());
-        lvLesionados.setAdapter(jogadorAdapter);
+        lvLesionados.setAdapter(new ListViewJogadorAdapter(this.getContext(), clube.getLesionados()));
 
 /*        Toast t = Toast.makeText(this,
                 clube.getNomeCompleto() + "\n" +

@@ -258,12 +258,14 @@ public class PaisFragment extends Fragment {
                     jogador.setNomeCompleto("Andres Nicolas D'Alessandro");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("15/04/1981"));
+                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
                     jogador.setNomeGuerra("D'Alessandro");
-                    jogador.setFoto("dalessandro");
+                    jogador.setFoto("dale");
+                    jogador.setPosicao("meio campo");
                     clube.getLesionados().add(jogador);
 
                     jogador = new Jogador();
@@ -271,12 +273,14 @@ public class PaisFragment extends Fragment {
                     jogador.setNomeCompleto("Eduardo Colcenti Antunes");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("24/02/1992"));
+                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
                     jogador.setNomeGuerra("Eduardo Sasha");
                     jogador.setFoto("sasha");
+                    jogador.setPosicao("meio campo");
                     clube.getLesionados().add(jogador);
 
                     jogador = new Jogador();
@@ -284,12 +288,14 @@ public class PaisFragment extends Fragment {
                     jogador.setNomeCompleto("Rever Humberto Alves Araujo");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("04/01/1985"));
+                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
                     jogador.setNomeGuerra("Rever");
                     jogador.setFoto("rever");
+                    jogador.setPosicao("defesa");
                     clube.getLesionados().add(jogador);
                 } else if (clube.getId() == 2) {//Gremio
                     jogador = new Jogador();
@@ -297,12 +303,14 @@ public class PaisFragment extends Fragment {
                     jogador.setNomeCompleto("Ramiro Moschen Benetti");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("22/05/1993"));
+                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
                     jogador.setNomeGuerra("Ramiro");
                     jogador.setFoto("ramiro");
+                    jogador.setPosicao("meio campo");
                     clube.getLesionados().add(jogador);
                 } else if (clube.getId() == 3) {//Vasco
                     jogador = new Jogador();
@@ -310,25 +318,29 @@ public class PaisFragment extends Fragment {
                     jogador.setNomeCompleto("Claudinei Cardoso Felix da Silva");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("06/12/1985"));
+                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
                     jogador.setNomeGuerra("Nei");
                     jogador.setFoto("nei");
+                    jogador.setPosicao("defesa");
                     clube.getLesionados().add(jogador);
                 } else if (clube.getId() == 4) {//Corinthians
                     jogador = new Jogador();
                     jogador.setId(6);
-                    jogador.setNomeCompleto("Luciano da Rocha Neves");
+                    jogador.setNomeCompleto("Eduardo Luis Abonizio Souza");
                     try {
-                        jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("18/05/1993"));
+                        jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("18/05/1981"));
+                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
-                    jogador.setNomeGuerra("Luciano");
-                    jogador.setFoto("luciano");
+                    jogador.setNomeGuerra("Edu Dracena");
+                    jogador.setFoto("dracena");
+                    jogador.setPosicao("Defesa");
                     clube.getLesionados().add(jogador);
                 }
             }
