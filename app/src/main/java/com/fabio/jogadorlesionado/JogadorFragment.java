@@ -1,63 +1,61 @@
 package com.fabio.jogadorlesionado;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.fabio.jogadorlesionado.negocio.Clube;
-import com.fabio.jogadorlesionado.negocio.Contrato;
 import com.fabio.jogadorlesionado.negocio.Jogador;
-import com.fabio.jogadorlesionado.negocio.Pais;
-import com.fabio.jogadorlesionado.negocio.Test;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-public class PaisFragment extends Fragment {
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
-    List<Pais> paises;
+public class JogadorFragment extends Fragment {
+    ImageView ivFoto;
+    ImageView ivBandPais;
+    TextView tvNome;
+    TextView tvNomeCompl;
+    TextView tvPosicao;
+    ListView lvLesoes;
+    ArrayAdapter<Jogador> jogadorAdapter;
 
     private AdView adView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View activity = inflater.inflate(R.layout.fragment_pais, null);
+        View activity = inflater.inflate(R.layout.fragment_jogador, null);
 
-        expListView = (ExpandableListView) activity.findViewById(R.id.expLV);
-        paises = new Test().montaListaPaises();
-        listAdapter = new ExpandableListAdapter(this.getActivity(), paises);
+        MainActivity main = (MainActivity) getActivity();
 
-        expListView.setAdapter(listAdapter);
+        Jogador jogador = main.getmJogador();
 
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                MainActivity main = (MainActivity) getActivity();
-                main.setmClube(paises.get(groupPosition).getClubes().get(childPosition));
+        ivFoto = (ImageView) activity.findViewById(R.id.iv_foto);
+        ivFoto.setImageResource(this.getResources().getIdentifier(
+                "com.fabio.jogadorlesionado:drawable/" + jogador.getFoto(), null, null));
 
-                // Create new fragment and transaction
-                Fragment clubeFragment = new ClubeFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        ivBandPais = (ImageView) activity.findViewById(R.id.iv_pais);
+        ivBandPais.setImageResource(this.getResources().getIdentifier(
+                "com.fabio.jogadorlesionado:drawable/" + jogador.getPais().getBandeira(), null, null));
 
-                transaction.replace(R.id.container, clubeFragment);
-                transaction.addToBackStack(null);
+        tvNome = (TextView) activity.findViewById(R.id.tv_nome);
+        tvNome.setText(jogador.getNomeGuerra());
 
-                transaction.commit();
+        tvNomeCompl = (TextView) activity.findViewById(R.id.tv_nome_compl);
+        tvNomeCompl.setText(jogador.getNomeCompleto());
 
-                return true;
-            }
-        });
+        tvPosicao = (TextView) activity.findViewById(R.id.tvPosicao);
+        tvPosicao.setText(main.getResources().getString(
+                main.getResources().getIdentifier(
+                        "com.fabio.jogadorlesionado:string/" + jogador.getPosicao().getStringVal(), null, null)));
+
+        lvLesoes = (ListView) activity.findViewById(R.id.lvLesoes);
+//        lvLesoes.setAdapter(new ListViewJogadorAdapter(this.getContext(), clube.getLesionados()));
 
         // Criando o AdView.
         adView = (AdView) activity.findViewById(R.id.adView);

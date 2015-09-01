@@ -6,48 +6,40 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.fabio.jogadorlesionado.ClubeFragment"
+    tools:context="com.fabio.jogadorlesionado.JogadorFragment"
     android:weightSum="1">
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginRight="10dp"
-        android:id="@+id/iv_escudo"
-        android:src="@drawable/internacional" />
+        android:id="@+id/iv_foto"
+        android:src="@drawable/dale" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Internacional"
-        android:id="@+id/tv_nome_clube"
+        android:text="D'Alessandro"
+        android:id="@+id/tv_nome"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/iv_escudo" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lv_lesionados"
-        android:layout_below="@+id/iv_escudo"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/adView" />
+        android:layout_toEndOf="@+id/iv_foto" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-        android:text="Sport Club Internacional"
+        android:text="Andres Nicolas D'Alessandro (33 anos)"
         android:id="@+id/tv_nome_compl"
-        android:layout_below="@+id/tv_nome_clube"
-        android:layout_alignStart="@+id/tv_nome_clube" />
+        android:layout_below="@+id/tv_nome"
+        android:layout_alignStart="@+id/tv_nome" />
 
     <ImageView
         android:layout_width="25dp"
         android:layout_height="60dp"
         android:layout_marginRight="0dp"
         android:id="@+id/iv_pais"
-        android:src="@drawable/brasil"
+        android:src="@drawable/argentina"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/tv_nome_compl" />
@@ -59,5 +51,31 @@
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-7696267246856953/6120043621"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:text="Atacante"
+        android:id="@+id/tvPosicao"
+        android:layout_alignBottom="@+id/iv_foto"
+        android:layout_alignStart="@+id/tv_nome_compl" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:textAppearance="?android:attr/textAppearanceButton"
+        android:text="@string/injury_history"
+        android:id="@+id/textView"
+        android:layout_below="@+id/tvPosicao"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvLesoes"
+        android:layout_below="@+id/textView"
+        android:layout_alignEnd="@+id/adView" />
 
 </RelativeLayout>

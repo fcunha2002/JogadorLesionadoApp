@@ -15,7 +15,8 @@ public class Jogador implements Serializable {
     private Date dataLesaoAtual;
     private Contrato contrato;
     private String foto;
-    private String posicao;
+    private Posicao posicao;
+    private Pais pais;
 
     public String getFoto() {
         return foto;
@@ -65,14 +66,6 @@ public class Jogador implements Serializable {
         this.contrato = contrato;
     }
 
-    public String getPosicao() {
-        return posicao;
-    }
-
-    public void setPosicao(String posicao) {
-        this.posicao = posicao;
-    }
-
     public Date getDataLesaoAtual() {
         return dataLesaoAtual;
     }
@@ -84,6 +77,22 @@ public class Jogador implements Serializable {
 
     public void setDataLesaoAtual(Date dataLesaoAtual) {
         this.dataLesaoAtual = dataLesaoAtual;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public Posicao getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(Posicao posicao) {
+        this.posicao = posicao;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.fabio.jogadorlesionado.negocio;
+package com.fabio.jogadorlesionado;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fabio.jogadorlesionado.R;
+import com.fabio.jogadorlesionado.negocio.Jogador;
 
 import java.util.List;
 
@@ -56,7 +57,9 @@ public class ListViewJogadorAdapter extends BaseAdapter {
         foto.setImageResource(_context.getResources().getIdentifier(
                 "com.fabio.jogadorlesionado:drawable/" + lesionado.getFoto(), null, null));
         nomeJogador.setText(lesionado.getNomeGuerra());
-        posicao.setText(lesionado.getPosicao());
+        posicao.setText(_context.getResources().getString(
+                _context.getResources().getIdentifier(
+                        "com.fabio.jogadorlesionado:string/" + lesionado.getPosicao().getStringVal(), null, null)));
         lesionadoDesde.setText(_context.getResources().getString(R.string.injured_since) + " " +
                                 lesionado.getDataLesaoAtualFormatada());
 

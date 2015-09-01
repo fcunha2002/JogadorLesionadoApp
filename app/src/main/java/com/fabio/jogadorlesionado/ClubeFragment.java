@@ -2,10 +2,12 @@ package com.fabio.jogadorlesionado;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -13,7 +15,6 @@ import android.widget.TextView;
 
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Jogador;
-import com.fabio.jogadorlesionado.negocio.ListViewJogadorAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -24,7 +25,7 @@ public class ClubeFragment extends Fragment {
     TextView tvNomeCompl;
     ListView lvLesionados;
     ArrayAdapter<Jogador> jogadorAdapter;
-
+    Clube clube;
     private AdView adView;
 
     @Override
@@ -33,7 +34,7 @@ public class ClubeFragment extends Fragment {
 
         MainActivity main = (MainActivity) getActivity();
 
-        Clube clube = main.getmClube();
+        clube = main.getmClube();
         ivEscudo = (ImageView) activity.findViewById(R.id.iv_escudo);
         ivEscudo.setImageResource(this.getResources().getIdentifier(
                 "com.fabio.jogadorlesionado:drawable/" + clube.getEscudo(), null, null));
@@ -50,6 +51,23 @@ public class ClubeFragment extends Fragment {
 
         lvLesionados = (ListView) activity.findViewById(R.id.lv_lesionados);
         lvLesionados.setAdapter(new ListViewJogadorAdapter(this.getContext(), clube.getLesionados()));
+
+        lvLesionados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3) {
+                MainActivity main = (MainActivity) getActivity();
+                main.setmJogador(clube.getLesionados().get(position));
+
+                // Create new fragment and transaction
+                Fragment jogadorFragment = new JogadorFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.container, jogadorFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
 
 /*        Toast t = Toast.makeText(this,
                 clube.getNomeCompleto() + "\n" +

@@ -7,11 +7,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.fabio.jogadorlesionado.negocio.Clube;
+import com.fabio.jogadorlesionado.negocio.Jogador;
 
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerCallbacks {
 
     private Clube mClube;
+    private Jogador mJogador;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -86,5 +88,13 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 
     public void setmClube(Clube mClube) {
         this.mClube = mClube;
+    }
+
+    public Jogador getmJogador() {
+        return mJogador;
+    }
+
+    public void setmJogador(Jogador mJogador) {
+        this.mJogador = mJogador;
     }
 }
