@@ -23,7 +23,7 @@
         android:text="D'Alessandro"
         android:id="@+id/tv_nome"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/iv_foto" />
+        android:layout_toRightOf="@+id/iv_foto" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:text="Andres Nicolas D'Alessandro (33 anos)"
         android:id="@+id/tv_nome_compl"
         android:layout_below="@+id/tv_nome"
-        android:layout_alignStart="@+id/tv_nome" />
+        android:layout_alignLeft="@+id/tv_nome" />
 
     <ImageView
         android:layout_width="25dp"
@@ -41,7 +41,7 @@
         android:id="@+id/iv_pais"
         android:src="@drawable/argentina"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_above="@+id/tv_nome_compl" />
 
     <com.google.android.gms.ads.AdView
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-7696267246856953/6120043621"/>
+        ads:adUnitId="ca-app-pub-7696267246856953/5065126027"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
         android:text="Atacante"
         android:id="@+id/tvPosicao"
         android:layout_alignBottom="@+id/iv_foto"
-        android:layout_alignStart="@+id/tv_nome_compl" />
+        android:layout_alignLeft="@+id/tv_nome_compl" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,6 +76,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/lvLesoes"
         android:layout_below="@+id/textView"
-        android:layout_alignEnd="@+id/adView" />
+        android:layout_alignRight="@+id/adView" />
 
 </RelativeLayout>
