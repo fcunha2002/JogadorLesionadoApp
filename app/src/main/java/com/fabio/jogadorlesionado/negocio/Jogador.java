@@ -2,6 +2,7 @@ package com.fabio.jogadorlesionado.negocio;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -12,11 +13,12 @@ public class Jogador implements Serializable {
     private String nomeCompleto;
     private String nomeGuerra;
     private Date dataNascimento;
-    private Date dataLesaoAtual;
+    private Lesao lesaoAtual;
     private Contrato contrato;
     private String foto;
     private Posicao posicao;
     private Pais pais;
+    private ArrayList<Lesao> historicoLesoes = new ArrayList<Lesao>();
 
     public String getFoto() {
         return foto;
@@ -66,17 +68,12 @@ public class Jogador implements Serializable {
         this.contrato = contrato;
     }
 
-    public Date getDataLesaoAtual() {
-        return dataLesaoAtual;
+    public Lesao getLesaoAtual() {
+        return lesaoAtual;
     }
 
-    public String getDataLesaoAtualFormatada(){
-        SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
-        return dt.format(this.getDataLesaoAtual());
-    }
-
-    public void setDataLesaoAtual(Date dataLesaoAtual) {
-        this.dataLesaoAtual = dataLesaoAtual;
+    public void setLesaoAtual(Lesao lesaoAtual) {
+        this.lesaoAtual = lesaoAtual;
     }
 
     public Pais getPais() {

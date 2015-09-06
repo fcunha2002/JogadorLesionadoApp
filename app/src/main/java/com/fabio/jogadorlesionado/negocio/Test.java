@@ -155,11 +155,11 @@ public class Test {
                     jogador.setNomeCompleto("Andres Nicolas D'Alessandro");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("15/04/1981"));
-                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
+                    jogador.setLesaoAtual(montaLesaoTorcao(jogador));
                     jogador.setNomeGuerra("D'Alessandro");
                     jogador.setFoto("dale");
                     jogador.setPosicao(Posicao.MEIO_CAMPO);
@@ -171,11 +171,11 @@ public class Test {
                     jogador.setNomeCompleto("Eduardo Colcenti Antunes");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("24/02/1992"));
-                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
+                    jogador.setLesaoAtual(montaLesaoDistensao(jogador));
                     jogador.setNomeGuerra("Eduardo Sasha");
                     jogador.setFoto("sasha");
                     jogador.setPosicao(Posicao.MEIO_CAMPO);
@@ -187,11 +187,11 @@ public class Test {
                     jogador.setNomeCompleto("Rever Humberto Alves Araujo");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("04/01/1985"));
-                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
+                    jogador.setLesaoAtual(montaLesaoLigamento(jogador));
                     jogador.setNomeGuerra("Rever");
                     jogador.setFoto("rever");
                     jogador.setPosicao(Posicao.DEFENSOR);
@@ -203,11 +203,11 @@ public class Test {
                     jogador.setNomeCompleto("Ramiro Moschen Benetti");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("22/05/1993"));
-                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
+                    jogador.setLesaoAtual(montaLesaoTorcao(jogador));
                     jogador.setNomeGuerra("Ramiro");
                     jogador.setFoto("ramiro");
                     jogador.setPosicao(Posicao.MEIO_CAMPO);
@@ -219,11 +219,11 @@ public class Test {
                     jogador.setNomeCompleto("Claudinei Cardoso Felix da Silva");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("06/12/1985"));
-                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
+                    jogador.setLesaoAtual(montaLesaoDistensao(jogador));
                     jogador.setNomeGuerra("Nei");
                     jogador.setFoto("nei");
                     jogador.setPosicao(Posicao.DEFENSOR);
@@ -235,11 +235,11 @@ public class Test {
                     jogador.setNomeCompleto("Eduardo Luis Abonizio Souza");
                     try {
                         jogador.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("18/05/1981"));
-                        jogador.setDataLesaoAtual(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
                     } catch (ParseException e) {
                         jogador.setDataNascimento(null);
                         e.printStackTrace();
                     }
+                    jogador.setLesaoAtual(montaLesaoLigamento(jogador));
                     jogador.setNomeGuerra("Edu Dracena");
                     jogador.setFoto("dracena");
                     jogador.setPosicao(Posicao.DEFENSOR);
@@ -278,4 +278,57 @@ public class Test {
 
         return pais;
     }
+
+    private Lesao montaLesaoDistensao(Jogador jogador){
+        Lesao lesao = new Lesao();
+
+        lesao.setId(0l);
+        lesao.setJogador(jogador);
+        try {
+            lesao.setDataInicio(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2015"));
+            lesao.setDataFim(new SimpleDateFormat("dd/MM/yyyy").parse("18/07/2015"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        lesao.setTipo("Distensão Muscular");
+        lesao.setDescricao("Posterior Coxa Direita");
+
+        return lesao;
+    }
+
+    private Lesao montaLesaoLigamento(Jogador jogador){
+        Lesao lesao = new Lesao();
+
+        lesao.setId(0l);
+        lesao.setJogador(jogador);
+        try {
+            lesao.setDataInicio(new SimpleDateFormat("dd/MM/yyyy").parse("05/03/2015"));
+            lesao.setDataFim(new SimpleDateFormat("dd/MM/yyyy").parse("31/08/2015"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        lesao.setTipo("Ligamento");
+        lesao.setDescricao("Cruzado Joelho Esquerdo");
+
+        return lesao;
+    }
+
+    private Lesao montaLesaoTorcao(Jogador jogador){
+        Lesao lesao = new Lesao();
+
+        lesao.setId(0l);
+        lesao.setJogador(jogador);
+        try {
+            lesao.setDataInicio(new SimpleDateFormat("dd/MM/yyyy").parse("15/07/2015"));
+            lesao.setDataFim(new SimpleDateFormat("dd/MM/yyyy").parse("21/07/2015"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        lesao.setTipo("Torção");
+        lesao.setDescricao("Tornozelo Direito");
+
+        return lesao;
+    }
+
+
 }
