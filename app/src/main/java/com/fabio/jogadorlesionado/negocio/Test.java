@@ -164,6 +164,9 @@ public class Test {
                     jogador.setFoto("dale");
                     jogador.setPosicao(Posicao.MEIO_CAMPO);
                     jogador.setPais(montaArgentina());
+                    jogador.getHistoricoLesoes().add(montaLesaoDistensao(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoLigamento(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoTorcao(jogador));
                     clube.getLesionados().add(jogador);
 
                     jogador = new Jogador();
@@ -180,6 +183,12 @@ public class Test {
                     jogador.setFoto("sasha");
                     jogador.setPosicao(Posicao.MEIO_CAMPO);
                     jogador.setPais(montaBrasil());
+                    jogador.getHistoricoLesoes().add(montaLesaoDistensao(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoLigamento(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoTorcao(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoDistensao(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoLigamento(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoTorcao(jogador));
                     clube.getLesionados().add(jogador);
 
                     jogador = new Jogador();
@@ -196,6 +205,7 @@ public class Test {
                     jogador.setFoto("rever");
                     jogador.setPosicao(Posicao.DEFENSOR);
                     jogador.setPais(montaBrasil());
+                    jogador.getHistoricoLesoes().add(montaLesaoDistensao(jogador));
                     clube.getLesionados().add(jogador);
                 } else if (clube.getId() == 2) {//Gremio
                     jogador = new Jogador();
@@ -212,6 +222,8 @@ public class Test {
                     jogador.setFoto("ramiro");
                     jogador.setPosicao(Posicao.MEIO_CAMPO);
                     jogador.setPais(montaBrasil());
+                    jogador.getHistoricoLesoes().add(montaLesaoDistensao(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoLigamento(jogador));
                     clube.getLesionados().add(jogador);
                 } else if (clube.getId() == 3) {//Vasco
                     jogador = new Jogador();
@@ -228,6 +240,9 @@ public class Test {
                     jogador.setFoto("nei");
                     jogador.setPosicao(Posicao.DEFENSOR);
                     jogador.setPais(montaBrasil());
+                    jogador.getHistoricoLesoes().add(montaLesaoDistensao(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoLigamento(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoTorcao(jogador));
                     clube.getLesionados().add(jogador);
                 } else if (clube.getId() == 4) {//Corinthians
                     jogador = new Jogador();
@@ -244,6 +259,11 @@ public class Test {
                     jogador.setFoto("dracena");
                     jogador.setPosicao(Posicao.DEFENSOR);
                     jogador.setPais(montaBrasil());
+                    jogador.getHistoricoLesoes().add(montaLesaoDistensao(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoLigamento(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoTorcao(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoLigamento(jogador));
+                    jogador.getHistoricoLesoes().add(montaLesaoTorcao(jogador));
                     clube.getLesionados().add(jogador);
                 }
             }
@@ -307,7 +327,7 @@ public class Test {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        lesao.setTipo("Ligamento");
+        lesao.setTipo("Lesão no Ligamento");
         lesao.setDescricao("Cruzado Joelho Esquerdo");
 
         return lesao;

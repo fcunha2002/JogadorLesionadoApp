@@ -92,6 +92,14 @@ public class Jogador implements Serializable {
         this.posicao = posicao;
     }
 
+    public ArrayList<Lesao> getHistoricoLesoes() {
+        return historicoLesoes;
+    }
+
+    public void setHistoricoLesoes(ArrayList<Lesao> historicoLesoes) {
+        this.historicoLesoes = historicoLesoes;
+    }
+
     @Override
     public String toString(){
         return this.nomeGuerra;

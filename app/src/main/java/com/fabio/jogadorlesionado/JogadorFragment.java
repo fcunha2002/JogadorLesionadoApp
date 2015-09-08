@@ -55,7 +55,7 @@ public class JogadorFragment extends Fragment {
                         "com.fabio.jogadorlesionado:string/" + jogador.getPosicao().getStringVal(), null, null)));
 
         lvLesoes = (ListView) activity.findViewById(R.id.lvLesoes);
-//        lvLesoes.setAdapter(new ListViewJogadorAdapter(this.getContext(), clube.getLesionados()));
+        lvLesoes.setAdapter(new ListViewHistLesaoAdapter(this.getContext(), jogador.getHistoricoLesoes()));
 
         // Criando o AdView.
         adView = (AdView) activity.findViewById(R.id.adView);
