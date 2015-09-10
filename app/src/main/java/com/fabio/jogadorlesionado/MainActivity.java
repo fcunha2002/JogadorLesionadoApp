@@ -114,7 +114,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         protected String doInBackground(String... params) {
             WebService ws = new WebService();
 
-            if (ws.atualizarValores()){
+            if (ws.atualizarValores(MainActivity.this)){
                 return "SUCCESS";
             }else{
                 return "ERROR";
