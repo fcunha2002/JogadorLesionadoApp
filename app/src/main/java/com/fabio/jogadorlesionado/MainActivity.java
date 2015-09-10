@@ -1,11 +1,16 @@
 package com.fabio.jogadorlesionado;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.fabio.jogadorlesionado.bancodados.WebService;
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Jogador;
 
@@ -32,9 +37,11 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
 
-        PaisFragment list = new PaisFragment();
+        PaisFragment paisFragment = new PaisFragment();
 
-        getSupportFragmentManager().beginTransaction().add(R.id.container, list).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, paisFragment).commit();
+
+        new MainActivity.MainTask().execute();
     }
 
     @Override
@@ -43,7 +50,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 //        Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
     }
 
-
     @Override
     public void onBackPressed() {
         if (mNavigationDrawerFragment.isDrawerOpen())
@@ -51,7 +57,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         else
             super.onBackPressed();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,7 +69,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         }
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -81,7 +85,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         return super.onOptionsItemSelected(item);
     }
 
-
     public Clube getmClube() {
         return mClube;
     }
@@ -97,4 +100,42 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
     public void setmJogador(Jogador mJogador) {
         this.mJogador = mJogador;
     }
+
+    class MainTask extends AsyncTask<String, Void, String> {
+
+        private final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+
+        protected void onPreExecute() {
+            this.dialog.setMessage("Aguarde… Atualizando Dados…");
+            this.dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            WebService ws = new WebService();
+
+            if (ws.atualizarValores()){
+                return "SUCCESS";
+            }else{
+                return "ERROR";
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {}
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            if (this.dialog.isShowing()) {
+                this.dialog.dismiss();
+            }
+
+            if (result.equals("ERROR")){
+                Toast toast = Toast.makeText(MainActivity.this, "Erro ao atualizar os dados", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
+    }
+
 }
