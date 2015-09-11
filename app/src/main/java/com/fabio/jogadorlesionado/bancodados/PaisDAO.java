@@ -17,6 +17,7 @@ public class PaisDAO {
     private SQLiteDatabase db;
     private String[] columns = {"_id", "nome", "bandeira"};
     private Helper helper;
+    private String TABELA = "pais";
 
     public PaisDAO(Context context)
     {
@@ -44,7 +45,7 @@ public class PaisDAO {
         values.put("nome", pais.getNome());
         values.put("bandeira", pais.getBandeira());
 
-        long insertId = db.insert("pais", null, values);
+        long insertId = db.insert(TABELA, null, values);
 
         return insertId;
     }
@@ -53,7 +54,7 @@ public class PaisDAO {
     {
         ArrayList<Pais> paises = new ArrayList<Pais>();
 
-        Cursor cursor = db.query("pais", columns, null, null, null, null, null);
+        Cursor cursor = db.query(TABELA, columns, null, null, null, null, null);
 
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
@@ -64,6 +65,20 @@ public class PaisDAO {
 
         cursor.close();
         return paises;
+    }
+
+    public boolean exists(long id){
+        Cursor cursor = db.query(TABELA, columns, "_id=" + id, null, null, null, null);
+
+        cursor.moveToFirst();
+        if (cursor.getCount()>0)
+        {
+            cursor.close();
+            return true;
+        }else{
+            cursor.close();
+            return false;
+        }
     }
 
     private Pais cursorToPais(Cursor cursor)

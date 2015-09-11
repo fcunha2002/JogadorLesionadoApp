@@ -39,8 +39,8 @@ public class PaisFragment extends Fragment {
         PaisDAO paisDAO = new PaisDAO(this.getActivity());
         paisDAO.openRead();
         paises.addAll(paisDAO.getAll());
-//        paises = new Test().montaListaPaises();
         paisDAO.close();
+
         listAdapter = new ExpandableListAdapter(this.getActivity(), paises);
 
         expListView.setAdapter(listAdapter);

@@ -71,11 +71,14 @@ public class WebService {
         paisDAO.openWrite();
 
         for (Pais pais : paises) {
-            paisDAO.insert(pais);
+            if (paisDAO.exists(pais.getId())){
+                //alteração
+            }else{
+                paisDAO.insert(pais);
+            }
         }
 
         paisDAO.close();
-
     }
 
     private Pais montaPais(JSONObject jObject){
