@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import com.fabio.jogadorlesionado.bancodados.PaisDAO;
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Contrato;
 import com.fabio.jogadorlesionado.negocio.Jogador;
@@ -26,7 +27,7 @@ import java.util.List;
 public class PaisFragment extends Fragment {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
-    List<Pais> paises;
+    List<Pais> paises = new ArrayList<Pais>();
 
     private AdView adView;
 
@@ -35,7 +36,11 @@ public class PaisFragment extends Fragment {
         View activity = inflater.inflate(R.layout.fragment_pais, null);
 
         expListView = (ExpandableListView) activity.findViewById(R.id.expLV);
-        paises = new Test().montaListaPaises();
+        PaisDAO paisDAO = new PaisDAO(this.getActivity());
+        paisDAO.openRead();
+        paises.addAll(paisDAO.getAll());
+//        paises = new Test().montaListaPaises();
+        paisDAO.close();
         listAdapter = new ExpandableListAdapter(this.getActivity(), paises);
 
         expListView.setAdapter(listAdapter);

@@ -3,11 +3,17 @@
     <string name="drawer_open">Menu aberto</string>
     <string name="drawer_close">Menu fechado</string>
     <string name="action_settings">Configurações</string>
+
     <string name="qtd_injured">jogadores lesionados</string>
     <string name="injured_since">lesionado desde</string>
     <string name="injury_history">HISTÓRICO DE LESÕES</string>
+
     <string name="goalkeeper">Goleiro</string>
     <string name="defender">Zagueiro</string>
     <string name="midfielder">Meio Campo</string>
     <string name="attacker">Atacante</string>
+
+    <string name="argentina">Argentina</string>
+    <string name="brazil">Brasil</string>
+    <string name="england">England</string>
 </resources>

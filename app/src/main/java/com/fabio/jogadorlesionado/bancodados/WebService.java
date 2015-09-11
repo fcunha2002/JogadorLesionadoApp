@@ -1,9 +1,7 @@
 package com.fabio.jogadorlesionado.bancodados;
 
 import android.content.Context;
-
 import com.fabio.jogadorlesionado.negocio.Pais;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -18,10 +16,8 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Fábio Cunha on 09/09/2015.
@@ -34,17 +30,14 @@ public class WebService {
         HttpConnectionParams.setSoTimeout(httpParams, 10000);
 
         HttpClient httpClient = new DefaultHttpClient();
-//        String server = "http://192.168.0.14/jlweb/";
-        String server = "http://10.32.84.17/jlweb/";
+        String server = "http://192.168.0.14/jlweb/";
+//        String server = "http://10.32.84.17/jlweb/";
 
         try {
             atualizaPaises(httpClient, server, context);
-
         } catch (Exception e) {
-
             //Erro ao buscar dados
             return false;
-
         }
 
         return true;

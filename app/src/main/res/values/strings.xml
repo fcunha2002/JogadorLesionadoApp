@@ -3,11 +3,17 @@
     <string name="drawer_open">Menu opened</string>
     <string name="drawer_close">Menu closed</string>
     <string name="action_settings">Settings</string>
+
     <string name="qtd_injured">injured players</string>
     <string name="injured_since">injured since</string>
     <string name="injury_history">INJURY HISTORY</string>
+
     <string name="goalkeeper">Goalkeeper</string>
     <string name="defender">Defender</string>
     <string name="midfielder">Midfielder</string>
     <string name="attacker">Attacker</string>
+
+    <string name="argentina">Argentina</string>
+    <string name="brazil">Brazil</string>
+    <string name="england">England</string>
 </resources>

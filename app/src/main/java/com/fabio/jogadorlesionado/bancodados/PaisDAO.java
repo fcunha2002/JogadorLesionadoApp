@@ -2,10 +2,13 @@ package com.fabio.jogadorlesionado.bancodados;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.fabio.jogadorlesionado.negocio.Pais;
+
+import java.util.ArrayList;
 
 /**
  * Created by Fábio Cunha on 10/09/2015.
@@ -46,4 +49,31 @@ public class PaisDAO {
         return insertId;
     }
 
+    public ArrayList<Pais> getAll()
+    {
+        ArrayList<Pais> paises = new ArrayList<Pais>();
+
+        Cursor cursor = db.query("pais", columns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast())
+        {
+            paises.add(cursorToPais(cursor));
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return paises;
+    }
+
+    private Pais cursorToPais(Cursor cursor)
+    {
+        Pais pais = new Pais();
+
+        pais.setId(cursor.getLong(0));
+        pais.setNome(cursor.getString(1));
+        pais.setBandeira(cursor.getString(2));
+
+        return pais;
+    }
 }
