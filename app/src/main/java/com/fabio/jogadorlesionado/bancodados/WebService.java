@@ -1,6 +1,8 @@
 package com.fabio.jogadorlesionado.bancodados;
 
 import android.content.Context;
+
+import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Pais;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -35,6 +37,7 @@ public class WebService {
 
         try {
             atualizaPaises(httpClient, server, context);
+            atualizaClubes(httpClient, server, context);
         } catch (Exception e) {
             //Erro ao buscar dados
             return false;
@@ -88,7 +91,7 @@ public class WebService {
             pais.setId(jObject.getLong("id"));
             pais.setNome(jObject.getString("nome"));
             pais.setBandeira(jObject.getString("bandeira"));
-            pais.setControle(jObject.getInt("controle") == 1 ? true : false);
+            pais.setControle(jObject.getInt("controle") == 1);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -96,5 +99,61 @@ public class WebService {
         return pais;
     }
 
+    private void atualizaClubes(HttpClient httpClient, String server, Context context) throws IOException, JSONException {
+        ArrayList<Clube> clubes = new ArrayList<Clube>();
+
+        String url = server + "getClube.php";
+        HttpPost httppost = new HttpPost(url);
+
+//            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+//            nameValuePairs.add(new BasicNameValuePair("codigo", "meus_dados"));
+//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        ResponseHandler<String> responseHandler = new BasicResponseHandler();
+        String responseBody = httpClient.execute(httppost, responseHandler);
+
+        JSONObject json = new JSONObject(responseBody);
+        JSONArray jArray = json.getJSONArray("clubes");
+
+        for (int i = 0; i < jArray.length(); i++) {
+
+            JSONObject e = jArray.getJSONObject(i);
+            String s = e.getString("dados");
+            JSONObject jObject = new JSONObject(s);
+
+            clubes.add(montaClube(jObject));
+        }
+
+        ClubeDAO clubeDAO = new ClubeDAO(context);
+        clubeDAO.openWrite();
+
+        for (Clube clube : clubes) {
+            if (clubeDAO.exists(clube.getId())){
+                clubeDAO.update(clube);
+            }else{
+                clubeDAO.insert(clube);
+            }
+        }
+
+        clubeDAO.close();
+    }
+
+    private Clube montaClube(JSONObject jObject){
+        Clube clube = new Clube();
+        Pais pais = new Pais();
+
+        try {
+            clube.setId(jObject.getLong("id"));
+            clube.setNomeCompleto(jObject.getString("nome_completo"));
+            clube.setNomeReduzido(jObject.getString("nome_reduzido"));
+            clube.setEscudo(jObject.getString("escudo"));
+            clube.setDivisao(jObject.getInt("divisao"));
+            pais.setId(jObject.getInt("pais_id"));
+            clube.setPais(pais);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return clube;
+    }
 
 }

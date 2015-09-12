@@ -14,7 +14,7 @@
         android:layout_height="60dp"
         android:layout_marginRight="10dp"
         android:id="@+id/iv_escudo"
-        android:src="@drawable/internacional" />
+        android:src="@drawable/c13" />
 
     <TextView
         android:layout_width="wrap_content"

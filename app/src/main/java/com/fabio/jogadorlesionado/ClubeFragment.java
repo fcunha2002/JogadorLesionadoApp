@@ -69,13 +69,6 @@ public class ClubeFragment extends Fragment {
             }
         });
 
-/*        Toast t = Toast.makeText(this,
-                clube.getNomeCompleto() + "\n" +
-                clube.getNomesLesionados(),
-                Toast.LENGTH_LONG);
-        t.setGravity(Gravity.CENTER,0,0);
-        t.show();*/
-
         // Criando o AdView.
         adView = (AdView) activity.findViewById(R.id.adView);
 

@@ -10,17 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import com.fabio.jogadorlesionado.bancodados.PaisDAO;
-import com.fabio.jogadorlesionado.negocio.Clube;
-import com.fabio.jogadorlesionado.negocio.Contrato;
-import com.fabio.jogadorlesionado.negocio.Jogador;
 import com.fabio.jogadorlesionado.negocio.Pais;
-import com.fabio.jogadorlesionado.negocio.Test;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 

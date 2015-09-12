@@ -12,6 +12,7 @@ public class Clube implements Serializable {
     private String escudo;
     private String nomeCompleto;
     private String nomeReduzido;
+    private int divisao;
     private Pais pais;
     private List<Jogador> lesionados = new ArrayList<Jogador>();
 
@@ -61,6 +62,14 @@ public class Clube implements Serializable {
 
     public void setEscudo(String escudo) {
         this.escudo = escudo;
+    }
+
+    public int getDivisao() {
+        return divisao;
+    }
+
+    public void setDivisao(int divisao) {
+        this.divisao = divisao;
     }
 
     @Override

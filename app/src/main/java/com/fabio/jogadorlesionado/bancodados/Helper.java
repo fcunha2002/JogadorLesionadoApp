@@ -8,9 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Helper extends SQLiteOpenHelper {
+    Context _context;
+
     public Helper(Context context)
     {
         super(context, "jldb", null, 1);
+        this._context = context;
     }
 
     @Override
@@ -20,6 +23,10 @@ public class Helper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE pais(_id Integer PRIMARY KEY NOT NULL, " +
                 "nome varchar(40) NOT NULL, bandeira varchar(10) NOT NULL," +
                 "controle tinyint(1) NOT NULL DEFAULT '0');");
+
+        db.execSQL("CREATE TABLE clube (_id Integer PRIMARY KEY NOT NULL," +
+                "nome_completo varchar(80) NOT NULL, nome_reduzido varchar(30) NOT NULL," +
+                "escudo varchar(6) NOT NULL, divisao integer NOT NULL, pais_id Integer NOT NULL);");
 
 //        db.execSQL("CREATE TABLE Contato_Local(_id Integer PRIMARY KEY NOT NULL, " +
 //                "nick varchar(20) NOT NULL, email varchar(70) NOT NULL);");
@@ -32,5 +39,13 @@ public class Helper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
+    }
+
+    public Context get_context() {
+        return _context;
+    }
+
+    public void set_context(Context _context) {
+        this._context = _context;
     }
 }

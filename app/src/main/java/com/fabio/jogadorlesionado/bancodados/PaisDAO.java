@@ -81,6 +81,16 @@ public class PaisDAO {
         }
 
         cursor.close();
+
+        if (controle){
+            ClubeDAO clubeDAO = new ClubeDAO(helper.get_context());
+            clubeDAO.openRead();
+            for (Pais pais : paises) {
+                pais.getClubes().addAll(clubeDAO.getAll(pais.getId()));
+            }
+            clubeDAO.close();
+        }
+
         return paises;
     }
 
@@ -105,7 +115,6 @@ public class PaisDAO {
         pais.setId(cursor.getLong(0));
         pais.setNome(cursor.getString(1));
         pais.setBandeira(cursor.getString(2));
-//        pais.setControle(cursor.getInt(3) == 1 ? true : false);
 
         return pais;
     }

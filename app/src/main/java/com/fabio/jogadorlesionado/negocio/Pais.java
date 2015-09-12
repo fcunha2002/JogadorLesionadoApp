@@ -7,11 +7,11 @@ import java.util.ArrayList;
  * Created by Fabio on 21/05/2015.
  */
 public class Pais implements Serializable {
-    private long id;
-    private String nome;
-    private String bandeira;
-    private boolean controle;
-    private ArrayList<Clube> clubes = new ArrayList<Clube>();
+    private long id; //Identificador chave
+    private String nome; //valor que indica a chave no arquivo 'strings' que guarda o nome do país
+    private String bandeira; //nome do arquivo que possui o figura da bandeira. padrão pX onde X é o id do país
+    private boolean controle; //booleano que diz se o país é também acompanhado pelo app
+    private ArrayList<Clube> clubes = new ArrayList<Clube>(); //lista de clubes do país
 
     public long getId() {
         return id;

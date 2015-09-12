@@ -106,7 +106,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         private final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
 
         protected void onPreExecute() {
-            this.dialog.setMessage("Aguarde… Atualizando Dados…");
+            this.dialog.setMessage(MainActivity.this.getResources().getString(
+                    MainActivity.this.getResources().getIdentifier(
+                            "com.fabio.jogadorlesionado:string/wait", null, null)));
             this.dialog.show();
         }
 
