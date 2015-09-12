@@ -10,6 +10,7 @@ public class Pais implements Serializable {
     private long id;
     private String nome;
     private String bandeira;
+    private boolean controle;
     private ArrayList<Clube> clubes = new ArrayList<Clube>();
 
     public long getId() {
@@ -42,6 +43,14 @@ public class Pais implements Serializable {
 
     public void setClubes(ArrayList<Clube> clubes) {
         this.clubes = clubes;
+    }
+
+    public boolean isControle() {
+        return controle;
+    }
+
+    public void setControle(boolean controle) {
+        this.controle = controle;
     }
 
     @Override

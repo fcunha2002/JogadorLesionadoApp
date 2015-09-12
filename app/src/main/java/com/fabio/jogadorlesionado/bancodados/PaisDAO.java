@@ -44,17 +44,34 @@ public class PaisDAO {
         values.put("_id", pais.getId());
         values.put("nome", pais.getNome());
         values.put("bandeira", pais.getBandeira());
+        values.put("controle", pais.isControle());
 
         long insertId = db.insert(TABELA, null, values);
 
         return insertId;
     }
 
-    public ArrayList<Pais> getAll()
+    public long update(Pais pais){
+        ContentValues values = new ContentValues();
+        values.put("nome", pais.getNome());
+        values.put("bandeira", pais.getBandeira());
+        values.put("controle", pais.isControle());
+
+        long updateId = db.update(TABELA, values, "_id=" + pais.getId(), null);
+
+        return updateId;
+    }
+
+    public ArrayList<Pais> getAll(boolean controle)
     {
         ArrayList<Pais> paises = new ArrayList<Pais>();
 
-        Cursor cursor = db.query(TABELA, columns, null, null, null, null, null);
+        Cursor cursor;
+        if (controle) {
+            cursor = db.query(TABELA, columns, "controle=1", null, null, null, null);
+        }else{
+            cursor = db.query(TABELA, columns, null, null, null, null, null);
+        }
 
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
@@ -88,6 +105,7 @@ public class PaisDAO {
         pais.setId(cursor.getLong(0));
         pais.setNome(cursor.getString(1));
         pais.setBandeira(cursor.getString(2));
+//        pais.setControle(cursor.getInt(3) == 1 ? true : false);
 
         return pais;
     }

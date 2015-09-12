@@ -18,7 +18,8 @@ public class Helper extends SQLiteOpenHelper {
     {
         //tabelas local
         db.execSQL("CREATE TABLE pais(_id Integer PRIMARY KEY NOT NULL, " +
-                "nome varchar(40) NOT NULL, bandeira varchar(10) NOT NULL);");
+                "nome varchar(40) NOT NULL, bandeira varchar(10) NOT NULL," +
+                "controle tinyint(1) NOT NULL DEFAULT '0');");
 
 //        db.execSQL("CREATE TABLE Contato_Local(_id Integer PRIMARY KEY NOT NULL, " +
 //                "nick varchar(20) NOT NULL, email varchar(70) NOT NULL);");

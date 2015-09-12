@@ -72,7 +72,7 @@ public class WebService {
 
         for (Pais pais : paises) {
             if (paisDAO.exists(pais.getId())){
-                //alteração
+                paisDAO.update(pais);
             }else{
                 paisDAO.insert(pais);
             }
@@ -88,6 +88,7 @@ public class WebService {
             pais.setId(jObject.getLong("id"));
             pais.setNome(jObject.getString("nome"));
             pais.setBandeira(jObject.getString("bandeira"));
+            pais.setControle(jObject.getInt("controle") == 1 ? true : false);
         } catch (JSONException e) {
             e.printStackTrace();
         }
