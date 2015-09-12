@@ -276,7 +276,7 @@ public class Test {
         Pais pais = new Pais();
         pais.setId(1);
         pais.setNome("Argentina");
-        pais.setBandeira("p2");
+        pais.setBandeira("p3");
 
         return pais;
     }

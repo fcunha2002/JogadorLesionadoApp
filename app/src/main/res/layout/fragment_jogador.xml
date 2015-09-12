@@ -39,7 +39,7 @@
         android:layout_height="60dp"
         android:layout_marginRight="0dp"
         android:id="@+id/iv_pais"
-        android:src="@drawable/p2"
+        android:src="@drawable/p3"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_above="@+id/tv_nome_compl" />
