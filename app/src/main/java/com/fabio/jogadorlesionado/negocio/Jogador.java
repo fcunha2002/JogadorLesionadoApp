@@ -14,7 +14,7 @@ public class Jogador implements Serializable {
     private String nomeGuerra;
     private Date dataNascimento;
     private Lesao lesaoAtual;
-    private Contrato contrato;
+    private Clube clube;
     private String foto;
     private Posicao posicao;
     private Pais pais;
@@ -60,12 +60,12 @@ public class Jogador implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public Contrato getContrato() {
-        return contrato;
+    public Clube getClube() {
+        return clube;
     }
 
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
+    public void setClube(Clube clube) {
+        this.clube = clube;
     }
 
     public Lesao getLesaoAtual() {

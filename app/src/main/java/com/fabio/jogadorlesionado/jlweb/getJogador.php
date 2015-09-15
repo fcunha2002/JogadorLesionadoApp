@@ -5,7 +5,7 @@ include "conecta.php";
 include "funcoes.php";
 
 mysql_query('SET CHARACTER SET utf-8');
-$sqlCommand = "SELECT * FROM clube";
+$sqlCommand = "SELECT * FROM jogador";
 
 $query = mysqli_query($conect, $sqlCommand);
 
@@ -16,6 +16,6 @@ while ($row = mysqli_fetch_assoc($query)){
     $dados[] = array("dados"=>$row);
 }
 
-echo json_encode(array("clubes"=>$dados));
+echo json_encode(array("jogadores"=>$dados));
 
 ?>

@@ -47,7 +47,7 @@ public class ClubeDAO {
         values.put("nome_reduzido", clube.getNomeReduzido());
         values.put("escudo", clube.getEscudo());
         values.put("divisao", clube.getDivisao());
-        values.put("pais_id", clube.getPais().getId());
+        values.put("id_pais", clube.getPais().getId());
 
         long insertId = db.insert(TABELA, null, values);
 
@@ -66,21 +66,29 @@ public class ClubeDAO {
         return updateId;
     }
 
-    public ArrayList<Clube> getAll(long pais_id)
+    public ArrayList<Clube> getAll(Pais pais)
     {
         ArrayList<Clube> clubes = new ArrayList<Clube>();
 
         Cursor cursor;
-        cursor = db.query(TABELA, columns, "pais_id=" + pais_id, null, null, null, null);
+        cursor = db.query(TABELA, columns, "id_pais=" + pais.getId(), null, null, null, null);
 
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
         {
-            clubes.add(cursorToClube(cursor));
+            clubes.add(cursorToClube(cursor, pais));
             cursor.moveToNext();
         }
 
         cursor.close();
+
+        JogadorDAO jogadorDAO = new JogadorDAO(helper.get_context());
+        jogadorDAO.openRead();
+        for (Clube clube : clubes) {
+            clube.getLesionados().addAll(jogadorDAO.getAll(clube));
+        }
+        jogadorDAO.close();
+
         return clubes;
     }
 
@@ -98,7 +106,7 @@ public class ClubeDAO {
         }
     }
 
-    private Clube cursorToClube(Cursor cursor)
+    private Clube cursorToClube(Cursor cursor, Pais pais)
     {
         Clube clube = new Clube();
 
@@ -107,6 +115,7 @@ public class ClubeDAO {
         clube.setNomeReduzido(cursor.getString(2));
         clube.setEscudo(cursor.getString(3));
         clube.setDivisao(cursor.getInt(4));
+        clube.setPais(pais);
 
         return clube;
     }

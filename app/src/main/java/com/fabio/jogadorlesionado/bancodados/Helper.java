@@ -20,20 +20,21 @@ public class Helper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         //tabelas local
-        db.execSQL("CREATE TABLE pais(_id Integer PRIMARY KEY NOT NULL, " +
+        db.execSQL("CREATE TABLE pais(_id integer PRIMARY KEY NOT NULL, " +
                 "nome varchar(40) NOT NULL, bandeira varchar(10) NOT NULL," +
                 "controle tinyint(1) NOT NULL DEFAULT '0');");
 
-        db.execSQL("CREATE TABLE clube (_id Integer PRIMARY KEY NOT NULL," +
+        db.execSQL("CREATE TABLE clube (_id integer PRIMARY KEY NOT NULL," +
                 "nome_completo varchar(80) NOT NULL, nome_reduzido varchar(30) NOT NULL," +
-                "escudo varchar(6) NOT NULL, divisao integer NOT NULL, pais_id Integer NOT NULL);");
+                "escudo varchar(6) NOT NULL, divisao integer NOT NULL, id_pais integer NOT NULL, " +
+                "FOREIGN KEY(id_pais) REFERENCES pais(_id));");
 
-//        db.execSQL("CREATE TABLE Contato_Local(_id Integer PRIMARY KEY NOT NULL, " +
-//                "nick varchar(20) NOT NULL, email varchar(70) NOT NULL);");
-//
-//        db.execSQL("CREATE TABLE Mensagem_Local(_id Integer PRIMARY KEY NOT NULL, texto varchar(160) NOT NULL, data DATE NOT NULL, hora TIME NOT NULL," +
-//                "_id_sender Integer NOT NULL, _id_target Long NOT NULL, FOREIGN KEY(_id_sender) REFERENCES Usuario_Local(_id), " +
-//                "FOREIGN KEY(_id_target) REFERENCES Contato(_id));");
+        db.execSQL("CREATE TABLE jogador (_id integer PRIMARY KEY NOT NULL, " +
+                "nome_completo varchar(80) NOT NULL, nome_guerra varchar(30) NOT NULL, " +
+                "foto varchar(6) NOT NULL, posicao varchar(15) NOT NULL, " +
+                "data_nascimento date NOT NULL, id_clube integer NOT NULL, id_pais integer NOT NULL, " +
+                "FOREIGN KEY(id_clube) REFERENCES clube(_id), FOREIGN KEY(id_pais) REFERENCES pais(_id));");
+
     }
 
     @Override

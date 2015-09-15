@@ -3,7 +3,10 @@ package com.fabio.jogadorlesionado.bancodados;
 import android.content.Context;
 
 import com.fabio.jogadorlesionado.negocio.Clube;
+import com.fabio.jogadorlesionado.negocio.Jogador;
 import com.fabio.jogadorlesionado.negocio.Pais;
+import com.fabio.jogadorlesionado.negocio.Posicao;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -19,6 +22,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 
 /**
@@ -38,6 +44,7 @@ public class WebService {
         try {
             atualizaPaises(httpClient, server, context);
             atualizaClubes(httpClient, server, context);
+            atualizaJogadores(httpClient, server, context);
         } catch (Exception e) {
             //Erro ao buscar dados
             return false;
@@ -147,7 +154,7 @@ public class WebService {
             clube.setNomeReduzido(jObject.getString("nome_reduzido"));
             clube.setEscudo(jObject.getString("escudo"));
             clube.setDivisao(jObject.getInt("divisao"));
-            pais.setId(jObject.getInt("pais_id"));
+            pais.setId(jObject.getInt("id_pais"));
             clube.setPais(pais);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -156,4 +163,73 @@ public class WebService {
         return clube;
     }
 
+    private void atualizaJogadores(HttpClient httpClient, String server, Context context) throws IOException, JSONException {
+        ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+
+        String url = server + "getJogador.php";
+        HttpPost httppost = new HttpPost(url);
+
+//            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+//            nameValuePairs.add(new BasicNameValuePair("codigo", "meus_dados"));
+//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        ResponseHandler<String> responseHandler = new BasicResponseHandler();
+        String responseBody = httpClient.execute(httppost, responseHandler);
+
+        JSONObject json = new JSONObject(responseBody);
+        JSONArray jArray = json.getJSONArray("jogadores");
+
+        for (int i = 0; i < jArray.length(); i++) {
+
+            JSONObject e = jArray.getJSONObject(i);
+            String s = e.getString("dados");
+            JSONObject jObject = new JSONObject(s);
+
+            jogadores.add(montaJogador(jObject));
+        }
+
+        JogadorDAO jogadorDAO = new JogadorDAO(context);
+        jogadorDAO.openWrite();
+
+        for (Jogador jogador : jogadores) {
+            if (jogadorDAO.exists(jogador.getId())){
+                jogadorDAO.update(jogador);
+            }else{
+                jogadorDAO.insert(jogador);
+            }
+        }
+
+        jogadorDAO.close();
+    }
+
+    private Jogador montaJogador(JSONObject jObject){
+        Jogador jogador = new Jogador();
+        Clube clube = new Clube();
+        Pais pais = new Pais();
+
+        try {
+            jogador.setId(jObject.getLong("id"));
+            jogador.setNomeCompleto(jObject.getString("nome_completo"));
+            jogador.setNomeGuerra(jObject.getString("nome_guerra"));
+            jogador.setFoto(jObject.getString("foto"));
+            jogador.setPosicao(Posicao.valueOf(jObject.getString("posicao")));
+
+            String data= jObject.getString("data_nascimento");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date d = formatter.parse(data);
+                jogador.setDataNascimento(d);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            clube.setId(jObject.getInt("id_clube"));
+            jogador.setClube(clube);
+            pais.setId(jObject.getInt("id_pais"));
+            jogador.setPais(pais);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return jogador;
+    }
 }
