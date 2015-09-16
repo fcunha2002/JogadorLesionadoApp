@@ -38,8 +38,8 @@ public class WebService {
         HttpConnectionParams.setSoTimeout(httpParams, 10000);
 
         HttpClient httpClient = new DefaultHttpClient();
-        String server = "http://192.168.0.14/jlweb/";
-//        String server = "http://10.32.84.17/jlweb/";
+//        String server = "http://192.168.0.14/jlweb/";
+        String server = "http://10.32.84.17/jlweb/";
 
         try {
             atualizaPaises(httpClient, server, context);

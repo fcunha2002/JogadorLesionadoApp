@@ -108,6 +108,18 @@ public class PaisDAO {
         }
     }
 
+    public Pais getById(long id){
+        Cursor cursor = db.query(TABELA, columns, "_id=" + id, null, null, null, null);
+
+        cursor.moveToFirst();
+        if (cursor.getCount()>0)
+        {
+            return cursorToPais(cursor);
+        }else{
+            return null;
+        }
+    }
+
     private Pais cursorToPais(Cursor cursor)
     {
         Pais pais = new Pais();

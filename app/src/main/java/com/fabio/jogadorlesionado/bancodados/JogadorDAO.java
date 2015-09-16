@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class JogadorDAO {
     private SQLiteDatabase db;
-    private String[] columns = {"_id", "nome_completo", "nome_guerra", "foto", "posicao", "data_nascimento"};
+    private String[] columns = {"_id", "nome_completo", "nome_guerra", "foto", "posicao", "data_nascimento", "id_pais"};
     private String[] id_column = {"_id"};
     private Helper helper;
     private String TABELA = "jogador";
@@ -52,7 +52,10 @@ public class JogadorDAO {
         values.put("nome_guerra", jogador.getNomeGuerra());
         values.put("foto", jogador.getFoto());
         values.put("posicao", jogador.getPosicao().name());
-        values.put("data_nascimento", jogador.getDataNascimento().toString());
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        values.put("data_nascimento", formatter.format(jogador.getDataNascimento()));
+
         values.put("id_clube", jogador.getClube().getId());
         values.put("id_pais", jogador.getPais().getId());
 
@@ -67,7 +70,10 @@ public class JogadorDAO {
         values.put("nome_guerra", jogador.getNomeGuerra());
         values.put("foto", jogador.getFoto());
         values.put("posicao", jogador.getPosicao().name());
-        values.put("data_nascimento", jogador.getDataNascimento().toString());
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        values.put("data_nascimento", formatter.format(jogador.getDataNascimento()));
+
         values.put("id_clube", jogador.getClube().getId());
         values.put("id_pais", jogador.getPais().getId());
 
@@ -119,7 +125,7 @@ public class JogadorDAO {
         jogador.setPosicao(Posicao.valueOf(cursor.getString(4)));
 
         String data= cursor.getString(5);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date d = formatter.parse(data);
             jogador.setDataNascimento(d);
@@ -127,8 +133,10 @@ public class JogadorDAO {
             e.printStackTrace();
         }
         jogador.setClube(clube);
-//        pais.setId(jObject.getInt("id_pais"));
-//        jogador.setPais(pais);
+
+        PaisDAO paisDAO = new PaisDAO(helper.get_context());
+        paisDAO.openRead();
+        jogador.setPais(paisDAO.getById(cursor.getInt(6)));
 
         return jogador;
     }
