@@ -3,7 +3,14 @@ header('Content-type: application/json');
 
 include "conecta.php";
 
-$sqlCommand = "SELECT * FROM pais";
+if (isset($_POST['dt_atualizacao'])){
+    $data = $_POST['dt_atualizacao'];
+    $sqlCommand = "SELECT * FROM pais where dt_atualizacao>='".$data."';";
+}else{
+    $sqlCommand = "SELECT * FROM pais;";
+}
+
+
 $query = mysqli_query($conect, $sqlCommand);
 
 $dados = array();

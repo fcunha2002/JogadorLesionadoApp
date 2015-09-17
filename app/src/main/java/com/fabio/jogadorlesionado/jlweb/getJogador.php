@@ -5,7 +5,13 @@ include "conecta.php";
 include "funcoes.php";
 
 mysql_query('SET CHARACTER SET utf-8');
-$sqlCommand = "SELECT * FROM jogador";
+
+if (isset($_POST['dt_atualizacao'])){
+    $data = $_POST['dt_atualizacao'];
+    $sqlCommand = "SELECT * FROM jogador where dt_atualizacao>='".$data."';";
+}else{
+    $sqlCommand = "SELECT * FROM jogador;";
+}
 
 $query = mysqli_query($conect, $sqlCommand);
 

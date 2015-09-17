@@ -26,11 +26,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Fábio Cunha on 09/09/2015.
  */
 public class WebService {
+
+    String data = "2015-09-17 00:00:00";
 
     public boolean atualizarValores(Context context){
         HttpParams httpParams = new BasicHttpParams();
@@ -59,9 +62,9 @@ public class WebService {
         String url = server + "getPais.php";
         HttpPost httppost = new HttpPost(url);
 
-//            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-//            nameValuePairs.add(new BasicNameValuePair("codigo", "meus_dados"));
-//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        nameValuePairs.add(new BasicNameValuePair("dt_atualizacao", data));
+        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
         ResponseHandler<String> responseHandler = new BasicResponseHandler();
         String responseBody = httpClient.execute(httppost, responseHandler);
 
@@ -112,9 +115,9 @@ public class WebService {
         String url = server + "getClube.php";
         HttpPost httppost = new HttpPost(url);
 
-//            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-//            nameValuePairs.add(new BasicNameValuePair("codigo", "meus_dados"));
-//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        nameValuePairs.add(new BasicNameValuePair("dt_atualizacao", data));
+        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
         ResponseHandler<String> responseHandler = new BasicResponseHandler();
         String responseBody = httpClient.execute(httppost, responseHandler);
 
@@ -169,9 +172,9 @@ public class WebService {
         String url = server + "getJogador.php";
         HttpPost httppost = new HttpPost(url);
 
-//            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-//            nameValuePairs.add(new BasicNameValuePair("codigo", "meus_dados"));
-//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        nameValuePairs.add(new BasicNameValuePair("dt_atualizacao", data));
+        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
         ResponseHandler<String> responseHandler = new BasicResponseHandler();
         String responseBody = httpClient.execute(httppost, responseHandler);
 

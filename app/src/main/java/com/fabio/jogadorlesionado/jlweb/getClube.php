@@ -1,11 +1,18 @@
 <?php
-header('Content-type: application/json');
+header('Content-type: application/json charset=iso-8859-1');
 
 include "conecta.php";
 include "funcoes.php";
 
 mysql_query('SET CHARACTER SET utf-8');
-$sqlCommand = "SELECT * FROM clube";
+
+
+if (isset($_POST['dt_atualizacao'])){
+    $data = $_POST['dt_atualizacao'];
+    $sqlCommand = "SELECT * FROM clube where dt_atualizacao>='".$data."';";
+}else{
+    $sqlCommand = "SELECT * FROM clube;";
+}
 
 $query = mysqli_query($conect, $sqlCommand);
 
