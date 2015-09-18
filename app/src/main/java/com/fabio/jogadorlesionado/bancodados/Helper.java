@@ -40,7 +40,7 @@ public class Helper extends SQLiteOpenHelper {
                 "id_jogador integer NOT NULL, " +
                 "data_inicio date NOT NULL, data_fim date DEFAULT NULL, " +
                 "tipo varchar(20) NOT NULL, descricao varchar(40) DEFAULT NULL, " +
-                "FOREIGN KEY(id_jogador) REFERENCES jogador(_id);");
+                "FOREIGN KEY(id_jogador) REFERENCES jogador(_id));");
 
 
     }
