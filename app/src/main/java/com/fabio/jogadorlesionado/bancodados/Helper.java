@@ -21,7 +21,6 @@ public class Helper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        //tabelas local
         db.execSQL("CREATE TABLE pais(_id integer PRIMARY KEY NOT NULL, " +
                 "nome varchar(40) NOT NULL, bandeira varchar(10) NOT NULL," +
                 "controle tinyint(1) NOT NULL DEFAULT '0');");
@@ -36,6 +35,13 @@ public class Helper extends SQLiteOpenHelper {
                 "foto varchar(6) NOT NULL, posicao varchar(15) NOT NULL, " +
                 "data_nascimento date NOT NULL, id_clube integer NOT NULL, id_pais integer NOT NULL, " +
                 "FOREIGN KEY(id_clube) REFERENCES clube(_id), FOREIGN KEY(id_pais) REFERENCES pais(_id));");
+
+        db.execSQL("CREATE TABLE lesao (_id integer PRIMARY KEY NOT NULL, " +
+                "id_jogador integer NOT NULL, " +
+                "data_inicio date NOT NULL, data_fim date DEFAULT NULL, " +
+                "tipo varchar(20) NOT NULL, descricao varchar(40) DEFAULT NULL, " +
+                "FOREIGN KEY(id_jogador) REFERENCES jogador(_id);");
+
 
     }
 

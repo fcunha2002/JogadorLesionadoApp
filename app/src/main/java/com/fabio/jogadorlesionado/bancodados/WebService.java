@@ -42,7 +42,7 @@ public class WebService {
 
         HttpClient httpClient = new DefaultHttpClient();
 //        String server = "http://192.168.0.14/jlweb/";
-        String server = "http://10.32.84.17/jlweb/";
+        String server = "http://injuredplayer.esy.es/jlweb/";
 
         try {
             atualizaPaises(httpClient, server, context);

@@ -4,7 +4,7 @@ header('Content-type: application/json');
 include "conecta.php";
 include "funcoes.php";
 
-mysql_query('SET CHARACTER SET utf-8');
+mysqli_query($conect, 'SET CHARACTER SET utf-8');
 
 if (isset($_POST['dt_atualizacao'])){
     $data = $_POST['dt_atualizacao'];
