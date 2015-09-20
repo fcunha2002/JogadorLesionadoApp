@@ -76,6 +76,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/lvLesoes"
         android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/adView" />
+        android:layout_alignRight="@+id/adView"
+        android:layout_above="@+id/adView" />
 
 </RelativeLayout>

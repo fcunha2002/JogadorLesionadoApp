@@ -6,7 +6,10 @@ package com.fabio.jogadorlesionado.negocio;
 public enum TipoLesao {
     KNEE_INJURY (1, "knee_injury"),
     GROIN_STRAIN (2, "groin_strain"),
-    HAMSTRING (3, "hamstring");
+    HAMSTRING (3, "hamstring"),
+    CALF_MUSCLE_STRAIN (4, "calf_muscle_strain"),
+    ANKLE_FOOT_INJURY (5, "ankle_foot_injury"),
+    ILLNESS (6, "illness");
 
     private long id;
     private String stringVal;

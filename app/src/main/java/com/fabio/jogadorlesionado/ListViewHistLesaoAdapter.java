@@ -65,8 +65,7 @@ public class ListViewHistLesaoAdapter extends BaseAdapter {
         }
 
         periodo.setText(lesao.getPeriodoLesao());
-        afastamento.setText(lesao.getTempoLesao() + " " +
-                            " dias lesionado");
+        afastamento.setText(lesao.getTempoLesao() + " " + "dias");
 
         return convertView;
     }

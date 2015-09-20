@@ -18,6 +18,9 @@
     <string name="knee_injury">Knee Injury</string>
     <string name="groin_strain">Groin Strain</string>
     <string name="hamstring">Hamstring</string>
+    <string name="calf_muscle_strain">Calf Muscle Strain</string>
+    <string name="ankle_foot_injury">Ankle/Foot Injury</string>
+    <string name="illness">Illness</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brazil</string>

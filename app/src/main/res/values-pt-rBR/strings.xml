@@ -18,6 +18,9 @@
     <string name="knee_injury">Lesão no joelho</string>
     <string name="groin_strain">Estiramento na virilha</string>
     <string name="hamstring">Lesão no tendão</string>
+    <string name="calf_muscle_strain">Estiramento na panturrilha</string>
+    <string name="ankle_foot_injury">Lesão no pé/tornozelo</string>
+    <string name="illness">Indisposição</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brasil</string>
