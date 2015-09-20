@@ -82,15 +82,6 @@ public class PaisDAO {
 
         cursor.close();
 
-        if (controle){
-            ClubeDAO clubeDAO = new ClubeDAO(helper.get_context());
-            clubeDAO.openRead();
-            for (Pais pais : paises) {
-                pais.getClubes().addAll(clubeDAO.getAll(pais));
-            }
-            clubeDAO.close();
-        }
-
         return paises;
     }
 

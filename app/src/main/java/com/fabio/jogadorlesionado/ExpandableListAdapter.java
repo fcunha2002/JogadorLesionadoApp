@@ -8,6 +8,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fabio.jogadorlesionado.bancodados.ClubeDAO;
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Pais;
 
@@ -29,6 +30,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parentView) {
         final Pais pais = _listaPaises.get(groupPosition);
+
+        if (pais.getClubes().size() == 0){
+            ClubeDAO clubeDAO = new ClubeDAO(_context);
+            clubeDAO.openRead();
+            pais.getClubes().addAll(clubeDAO.getAll(pais));
+            clubeDAO.close();
+        }
 
         if (convertView == null) {
             LayoutInflater inflaInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
