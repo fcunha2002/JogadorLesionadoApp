@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.fabio.jogadorlesionado.bancodados.JogadorDAO;
+import com.fabio.jogadorlesionado.bancodados.LesaoDAO;
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Jogador;
 import com.google.android.gms.ads.AdRequest;
@@ -34,6 +36,10 @@ public class JogadorFragment extends Fragment {
         MainActivity main = (MainActivity) getActivity();
 
         Jogador jogador = main.getmJogador();
+        LesaoDAO lesaoDAO = new LesaoDAO(main);
+        lesaoDAO.openRead();
+        jogador.getHistoricoLesoes().addAll(lesaoDAO.getAll(jogador));
+        lesaoDAO.close();
 
         ivFoto = (ImageView) activity.findViewById(R.id.iv_foto);
         ivFoto.setImageResource(this.getResources().getIdentifier(

@@ -4,8 +4,10 @@ import android.content.Context;
 
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Jogador;
+import com.fabio.jogadorlesionado.negocio.Lesao;
 import com.fabio.jogadorlesionado.negocio.Pais;
 import com.fabio.jogadorlesionado.negocio.Posicao;
+import com.fabio.jogadorlesionado.negocio.TipoLesao;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -41,13 +43,13 @@ public class WebService {
         HttpConnectionParams.setSoTimeout(httpParams, 10000);
 
         HttpClient httpClient = new DefaultHttpClient();
-//        String server = "http://192.168.0.14/jlweb/";
         String server = "http://injuredplayer.esy.es/jlweb/";
 
         try {
             atualizaPaises(httpClient, server, context);
             atualizaClubes(httpClient, server, context);
             atualizaJogadores(httpClient, server, context);
+            atualizaLesoes(httpClient, server, context);
         } catch (Exception e) {
             //Erro ao buscar dados
             return false;
@@ -235,4 +237,73 @@ public class WebService {
 
         return jogador;
     }
+
+    private void atualizaLesoes(HttpClient httpClient, String server, Context context) throws IOException, JSONException {
+        ArrayList<Lesao> lesoes = new ArrayList<Lesao>();
+
+        String url = server + "getLesao.php";
+        HttpPost httppost = new HttpPost(url);
+
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        nameValuePairs.add(new BasicNameValuePair("dt_atualizacao", data));
+        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        ResponseHandler<String> responseHandler = new BasicResponseHandler();
+        String responseBody = httpClient.execute(httppost, responseHandler);
+
+        JSONObject json = new JSONObject(responseBody);
+        JSONArray jArray = json.getJSONArray("lesoes");
+
+        for (int i = 0; i < jArray.length(); i++) {
+
+            JSONObject e = jArray.getJSONObject(i);
+            String s = e.getString("dados");
+            JSONObject jObject = new JSONObject(s);
+
+            lesoes.add(montaLesao(jObject));
+        }
+
+        LesaoDAO lesaoDAO = new LesaoDAO(context);
+        lesaoDAO.openWrite();
+
+        for (Lesao lesao : lesoes) {
+            if (lesaoDAO.exists(lesao.getId())){
+                lesaoDAO.update(lesao);
+            }else{
+                lesaoDAO.insert(lesao);
+            }
+        }
+
+        lesaoDAO.close();
+    }
+
+    private Lesao montaLesao(JSONObject jObject){
+        Lesao lesao = new Lesao();
+        Jogador jogador = new Jogador();
+
+        try {
+            lesao.setId(jObject.getLong("id"));
+            lesao.setDescricao(jObject.getString("descricao"));
+            lesao.setTipo(TipoLesao.valueOf(jObject.getString("tipo")));
+
+            try {
+                String data= jObject.getString("data_inicio");
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date d = formatter.parse(data);
+                lesao.setDataInicio(d);
+                data= jObject.getString("data_fim");
+                d = formatter.parse(data);
+                lesao.setDataFim(d);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            jogador.setId(jObject.getInt("id_jogador"));
+            lesao.setJogador(jogador);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return lesao;
+    }
+
 }

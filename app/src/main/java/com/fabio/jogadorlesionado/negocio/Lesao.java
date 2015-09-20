@@ -13,7 +13,7 @@ public class Lesao implements Serializable {
     private Jogador jogador;
     private Date dataInicio;
     private Date dataFim;
-    private String tipo;
+    private TipoLesao tipo;
     private String descricao;
 
     public long getId() {
@@ -47,7 +47,11 @@ public class Lesao implements Serializable {
         cal.setTime(data_atual);
         data_atual = cal.getTime();
 
-        return (data_atual.getTime() - dataInicio.getTime()) / (24*60*60*1000);
+        if (dataFim != null){
+            return (dataFim.getTime() - dataInicio.getTime()) / (24 * 60 * 60 * 1000);
+        }else{
+            return (data_atual.getTime() - dataInicio.getTime()) / (24 * 60 * 60 * 1000);
+        }
     }
 
     public String getDataInicioFormatada(){
@@ -68,11 +72,11 @@ public class Lesao implements Serializable {
         return dt.format(this.getDataFim());
     }
 
-    public String getTipo() {
+    public TipoLesao getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoLesao tipo) {
         this.tipo = tipo;
     }
 

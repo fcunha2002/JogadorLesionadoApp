@@ -15,6 +15,10 @@
     <string name="midfielder">Midfielder</string>
     <string name="attacker">Attacker</string>
 
+    <string name="knee_injury">Knee Injury</string>
+    <string name="groin_strain">Groin Strain</string>
+    <string name="hamstring">Hamstring</string>
+
     <string name="argentina">Argentina</string>
     <string name="brazil">Brazil</string>
     <string name="england">England</string>

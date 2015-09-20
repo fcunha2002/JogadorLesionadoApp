@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Jogador;
+import com.fabio.jogadorlesionado.negocio.Pais;
 import com.fabio.jogadorlesionado.negocio.Posicao;
 
 import java.text.ParseException;
@@ -111,6 +112,18 @@ public class JogadorDAO {
         }else{
             cursor.close();
             return false;
+        }
+    }
+
+    public Jogador getById(long id){
+        Cursor cursor = db.query(TABELA, columns, "_id=" + id, null, null, null, null);
+
+        cursor.moveToFirst();
+        if (cursor.getCount()>0)
+        {
+            return cursorToJogador(cursor, null);
+        }else{
+            return null;
         }
     }
 

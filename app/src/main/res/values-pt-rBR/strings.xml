@@ -15,6 +15,10 @@
     <string name="midfielder">Meio Campo</string>
     <string name="attacker">Atacante</string>
 
+    <string name="knee_injury">Lesão no joelho</string>
+    <string name="groin_strain">Estiramento na virilha</string>
+    <string name="hamstring">Lesão no tendão</string>
+
     <string name="argentina">Argentina</string>
     <string name="brazil">Brasil</string>
     <string name="england">Inglaterra</string>

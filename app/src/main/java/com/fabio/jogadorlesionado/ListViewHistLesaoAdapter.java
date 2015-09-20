@@ -54,10 +54,10 @@ public class ListViewHistLesaoAdapter extends BaseAdapter {
         TextView periodo = (TextView) convertView.findViewById(R.id.txvPeriodo);
         TextView afastamento = (TextView) convertView.findViewById(R.id.txvAfastamento);
 
-        tipoLesao.setText(lesao.getTipo());
-//        posicao.setText(_context.getResources().getString(
-//                _context.getResources().getIdentifier(
-//                        "com.fabio.jogadorlesionado:string/" + lesionado.getPosicao().getStringVal(), null, null)));
+        tipoLesao.setText(_context.getResources().getString(
+                _context.getResources().getIdentifier(
+                        "com.fabio.jogadorlesionado:string/" + lesao.getTipo().getStringVal(), null, null)));
+
         descricao.setText(lesao.getDescricao());
         periodo.setText(lesao.getDataInicioFormatada());
         afastamento.setText(lesao.getTempoLesao() + " " +
