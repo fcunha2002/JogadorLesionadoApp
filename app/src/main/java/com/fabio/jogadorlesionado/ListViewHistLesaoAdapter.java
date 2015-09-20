@@ -58,8 +58,13 @@ public class ListViewHistLesaoAdapter extends BaseAdapter {
                 _context.getResources().getIdentifier(
                         "com.fabio.jogadorlesionado:string/" + lesao.getTipo().getStringVal(), null, null)));
 
-        descricao.setText(lesao.getDescricao());
-        periodo.setText(lesao.getDataInicioFormatada());
+        if (lesao.getDescricao() != null) {
+            descricao.setText(lesao.getDescricao());
+        }else{
+            descricao.setText("");
+        }
+
+        periodo.setText(lesao.getPeriodoLesao());
         afastamento.setText(lesao.getTempoLesao() + " " +
                             " dias lesionado");
 

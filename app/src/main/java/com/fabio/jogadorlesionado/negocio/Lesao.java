@@ -72,6 +72,14 @@ public class Lesao implements Serializable {
         return dt.format(this.getDataFim());
     }
 
+    public String getPeriodoLesao(){
+        if (this.dataFim != null){
+            return getDataInicioFormatada() + " - " + getDataFimFormatada();
+        }else{
+            return getDataInicioFormatada();
+        }
+    }
+
     public TipoLesao getTipo() {
         return tipo;
     }

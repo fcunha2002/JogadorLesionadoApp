@@ -36,10 +36,13 @@ public class JogadorFragment extends Fragment {
         MainActivity main = (MainActivity) getActivity();
 
         Jogador jogador = main.getmJogador();
-        LesaoDAO lesaoDAO = new LesaoDAO(main);
-        lesaoDAO.openRead();
-        jogador.getHistoricoLesoes().addAll(lesaoDAO.getAll(jogador));
-        lesaoDAO.close();
+
+        if (jogador.getHistoricoLesoes().size() == 0) {
+            LesaoDAO lesaoDAO = new LesaoDAO(main);
+            lesaoDAO.openRead();
+            jogador.getHistoricoLesoes().addAll(lesaoDAO.getAll(jogador));
+            lesaoDAO.close();
+        }
 
         ivFoto = (ImageView) activity.findViewById(R.id.iv_foto);
         ivFoto.setImageResource(this.getResources().getIdentifier(

@@ -116,7 +116,12 @@ public class LesaoDAO {
 
         lesao.setId(cursor.getLong(0));
         lesao.setTipo(TipoLesao.valueOf(cursor.getString(4)));
-        lesao.setDescricao(cursor.getString(5));
+
+        if (!cursor.getString(5).equals("null")) {
+            lesao.setDescricao(cursor.getString(5));
+        }else{
+            lesao.setDescricao(null);
+        }
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
