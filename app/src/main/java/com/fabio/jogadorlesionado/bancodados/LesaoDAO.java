@@ -83,7 +83,7 @@ public class LesaoDAO {
         ArrayList<Lesao> lesoes = new ArrayList<Lesao>();
 
         Cursor cursor;
-        cursor = db.query(TABELA, columns, "id_jogador=" + jogador.getId(), null, null, null, null);
+        cursor = db.query(TABELA, columns, "id_jogador=" + jogador.getId(), null, null, null, "data_inicio DESC");
 
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
