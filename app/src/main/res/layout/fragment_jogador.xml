@@ -14,7 +14,7 @@
         android:layout_height="65dp"
         android:layout_marginRight="10dp"
         android:id="@+id/iv_foto"
-        android:src="@drawable/dale" />
+        android:src="@drawable/jn" />
 
     <TextView
         android:layout_width="wrap_content"

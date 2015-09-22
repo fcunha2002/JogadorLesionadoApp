@@ -27,6 +27,9 @@
     <string name="achilles_tendonitis">Tendinite no Tendão de Aquiles</string>
     <string name="calf_shin_injury">Lesão na Panturrilha/Canela</string>
     <string name="broken_nose">Fratura do Nariz</string>
+    <string name="acl_knee_ligament">Lesão no Ligamento Cruzado Anterior</string>
+    <string name="back_injury">Lesão nas Costas</string>
+    <string name="knock">Pancada</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brasil</string>
@@ -34,4 +37,9 @@
     <string name="czech_republic">República Tcheca</string>
     <string name="germany">Alemanha</string>
     <string name="france">França</string>
+    <string name="denmark">Dinamarca</string>
+    <string name="spain">Espanha</string>
+    <string name="senegal">Senegal</string>
+    <string name="cote_d_ivoire">Costa do Marfim</string>
+    <string name="ireland">Irlanda</string>
 </resources>

@@ -15,7 +15,10 @@ public enum TipoLesao {
     FIBULA_FRACTURE (9, "fibula_fracture"),
     ACHILLES_TENDONITIS (10, "achilles_tendonitis"),
     CALF_SHIN_INJURY (11, "calf_shin_injury"),
-    BROKEN_NOSE (12, "broken_nose");
+    BROKEN_NOSE (12, "broken_nose"),
+    ACL_KNEE_LIGAMENT (13, "acl_knee_ligament"),
+    BACK_INJURY (14, "back_injury"),
+    KNOCK (15, "knock");
 
     private long id;
     private String stringVal;

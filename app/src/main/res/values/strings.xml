@@ -27,6 +27,9 @@
     <string name="achilles_tendonitis">Achilles Tendonitis</string>
     <string name="calf_shin_injury">Calf Shin Injury</string>
     <string name="broken_nose">Broken Nose</string>
+    <string name="acl_knee_ligament">ACL Knee Ligament Injury</string>
+    <string name="back_injury">Back Injury</string>
+    <string name="knock">Knock</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brazil</string>
@@ -34,4 +37,9 @@
     <string name="czech_republic">Czech Republic</string>
     <string name="germany">Germany</string>
     <string name="france">France</string>
+    <string name="denmark">Denmark</string>
+    <string name="spain">Spain</string>
+    <string name="senegal">Senegal</string>
+    <string name="cote_d_ivoire">Côte d\'Ivoire</string>
+    <string name="ireland">Ireland</string>
 </resources>
