@@ -56,7 +56,9 @@ public class LesaoDAO {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         values.put("data_inicio", formatter.format(lesao.getDataInicio()));
-        values.put("data_fim", formatter.format(lesao.getDataFim()));
+        if (lesao.getDataFim() != null) {
+            values.put("data_fim", formatter.format(lesao.getDataFim()));
+        }
 
         long insertId = db.insert(TABELA, null, values);
 
@@ -71,7 +73,9 @@ public class LesaoDAO {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         values.put("data_inicio", formatter.format(lesao.getDataInicio()));
-        values.put("data_fim", formatter.format(lesao.getDataFim()));
+        if (lesao.getDataFim() != null) {
+            values.put("data_fim", formatter.format(lesao.getDataFim()));
+        }
 
         long updateId = db.update(TABELA, values, "_id=" + lesao.getId(), null);
 
@@ -129,9 +133,13 @@ public class LesaoDAO {
             Date d = formatter.parse(data);
             lesao.setDataInicio(d);
 
-            data= cursor.getString(3);
-            d = formatter.parse(data);
-            lesao.setDataFim(d);
+            if (cursor.getString(3) != null) {
+                data = cursor.getString(3);
+                d = formatter.parse(data);
+                lesao.setDataFim(d);
+            }else{
+                lesao.setDataFim(null);
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }

@@ -21,9 +21,17 @@
     <string name="calf_muscle_strain">Calf Muscle Strain</string>
     <string name="ankle_foot_injury">Ankle/Foot Injury</string>
     <string name="illness">Illness</string>
+    <string name="thigh_muscle_strain">Thigh Muscle Strain</string>
+    <string name="ankle_ligaments">Ankle Ligaments</string>
+    <string name="fibula_fracture">Fibula Fracture</string>
+    <string name="achilles_tendonitis">Achilles Tendonitis</string>
+    <string name="calf_shin_injury">Calf Shin Injury</string>
+    <string name="broken_nose">Broken Nose</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brazil</string>
     <string name="england">England</string>
     <string name="czech_republic">Czech Republic</string>
+    <string name="germany">Germany</string>
+    <string name="france">France</string>
 </resources>

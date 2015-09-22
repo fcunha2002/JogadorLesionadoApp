@@ -15,15 +15,23 @@
     <string name="midfielder">Meio Campo</string>
     <string name="attacker">Atacante</string>
 
-    <string name="knee_injury">Lesão no joelho</string>
-    <string name="groin_strain">Estiramento na virilha</string>
-    <string name="hamstring">Lesão no tendão</string>
-    <string name="calf_muscle_strain">Estiramento na panturrilha</string>
-    <string name="ankle_foot_injury">Lesão no pé/tornozelo</string>
+    <string name="knee_injury">Lesão no Joelho</string>
+    <string name="groin_strain">Estiramento na Virilha</string>
+    <string name="hamstring">Lesão no Tendão</string>
+    <string name="calf_muscle_strain">Estiramento na Panturrilha</string>
+    <string name="ankle_foot_injury">Lesão no Pé/Tornozelo</string>
     <string name="illness">Indisposição</string>
+    <string name="thigh_muscle_strain">Distensão Muscular Coxa</string>
+    <string name="ankle_ligaments">Lesão Ligamentos Tornozelo</string>
+    <string name="fibula_fracture">Fratura da Fíbula</string>
+    <string name="achilles_tendonitis">Tendinite no Tendão de Aquiles</string>
+    <string name="calf_shin_injury">Lesão na Panturrilha/Canela</string>
+    <string name="broken_nose">Fratura do Nariz</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brasil</string>
     <string name="england">Inglaterra</string>
     <string name="czech_republic">República Tcheca</string>
+    <string name="germany">Alemanha</string>
+    <string name="france">França</string>
 </resources>
