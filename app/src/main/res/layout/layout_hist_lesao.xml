@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lytHistLesao"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
     android:stretchColumns="1"
-    android:paddingTop="0dip"
+    android:paddingTop="10dip"
     android:layout_gravity="top">
     <!--entender melhor o que é stretchColumns-->
     <TableRow>
@@ -20,21 +21,11 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_weight="1" android:layout_gravity="top"
-                    android:textSize="17sp" android:layout_marginLeft="10dp"
-                    android:text="Lesão Muscular"/>
+                    android:textSize="17sp" android:layout_marginLeft="5dp"
+                    android:text="Lesão Muscular"
+                    android:textStyle="bold" />
             </TableRow>
-            <TableRow>
-                <TextView
-                    android:id="@+id/txvDescricao"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:textColor="#000000"
-                    android:layout_weight="1"
-                    android:layout_gravity="left"
-                    android:textSize="14sp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Posterior Coxa Direita"/>
-            </TableRow>
+
             <TableRow >
                 <TextView
                     android:id="@+id/txvPeriodo"
@@ -42,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:textColor="#000000"
                     android:layout_weight="1" android:layout_gravity="left|center_vertical"
-                    android:textSize="14sp" android:layout_marginLeft="10dp"
+                    android:textSize="14sp" android:layout_marginLeft="5dp"
                     android:text="01/07/2015 - 18/07/2015"/>
             </TableRow>
         </TableLayout>
@@ -55,9 +46,10 @@
             android:layout_weight="1"
             android:layout_gravity="top"
             android:textSize="17sp"
-            android:layout_marginLeft="10dp"
-            android:text="23 dias afastado"
+            android:layout_marginRight="5dp"
+            android:text="23 dias"
             android:layout_column="1"
-            android:gravity="right" />
+            android:gravity="end"
+            android:textStyle="bold" />
     </TableRow>
 </TableLayout>

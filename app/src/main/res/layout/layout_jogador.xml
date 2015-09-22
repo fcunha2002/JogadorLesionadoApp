@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:background="#ffffff"
     android:stretchColumns="1"
-    android:paddingTop="0dip"
+    android:paddingTop="10dip"
     android:layout_gravity="top">
     <!--entender melhor o que é stretchColumns-->
     <TableRow>
@@ -12,7 +12,7 @@
             android:id="@+id/imgFoto"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="0dp"
             android:src="@drawable/jn"
             android:layout_gravity="center_vertical"/>
         <TableLayout
@@ -27,7 +27,8 @@
                     android:layout_width="wrap_content"
                     android:layout_weight="1" android:layout_gravity="top"
                     android:textSize="17sp" android:layout_marginLeft="10dp"
-                    android:text="Tomáš Rosický"/>
+                    android:text="Tomáš Rosický"
+                    android:textStyle="bold" />
             </TableRow>
             <TableRow>
                 <TextView

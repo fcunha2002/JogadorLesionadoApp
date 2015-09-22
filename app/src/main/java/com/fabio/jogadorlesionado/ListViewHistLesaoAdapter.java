@@ -1,11 +1,13 @@
 package com.fabio.jogadorlesionado;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.fabio.jogadorlesionado.negocio.Jogador;
@@ -50,22 +52,32 @@ public class ListViewHistLesaoAdapter extends BaseAdapter {
         }
 
         TextView tipoLesao = (TextView) convertView.findViewById(R.id.txvTipoLesao);
-        TextView descricao = (TextView) convertView.findViewById(R.id.txvDescricao);
+//        TextView descricao = (TextView) convertView.findViewById(R.id.txvDescricao);
         TextView periodo = (TextView) convertView.findViewById(R.id.txvPeriodo);
         TextView afastamento = (TextView) convertView.findViewById(R.id.txvAfastamento);
+        TableLayout linha = (TableLayout) convertView.findViewById(R.id.lytHistLesao);
 
         tipoLesao.setText(_context.getResources().getString(
                 _context.getResources().getIdentifier(
                         "com.fabio.jogadorlesionado:string/" + lesao.getTipo().getStringVal(), null, null)));
 
-        if (lesao.getDescricao() != null) {
-            descricao.setText(lesao.getDescricao());
-        }else{
-            descricao.setText("");
-        }
+//        if (lesao.getDescricao() != null) {
+//            descricao.setText(lesao.getDescricao());
+//        }else{
+//            descricao.setText("");
+//        }
 
         periodo.setText(lesao.getPeriodoLesao());
-        afastamento.setText(lesao.getTempoLesao() + " " + "dias");
+        long tempo = lesao.getTempoLesao();
+        afastamento.setText(tempo + " " + "dias");
+
+        if (tempo<=15){
+            linha.setBackgroundColor(_context.getResources().getColor(R.color.leve));
+        }else if (tempo>15 && tempo<=45){
+            linha.setBackgroundColor(_context.getResources().getColor(R.color.media));
+        }else{
+            linha.setBackgroundColor(_context.getResources().getColor(R.color.grave));
+        }
 
         return convertView;
     }
