@@ -77,16 +77,4 @@ public class Clube implements Serializable {
         return this.getNomeReduzido();
     }
 
-    public String getNomesLesionados() {
-        String nomes = "";
-        for (Jogador j : this.lesionados) {
-            nomes = nomes + j.getNomeGuerra() + "\n";
-        }
-        if(nomes.length()>0) {
-            return nomes.substring(0, nomes.length() - 1);
-        } else {
-            return nomes;
-        }
-    }
-
 }

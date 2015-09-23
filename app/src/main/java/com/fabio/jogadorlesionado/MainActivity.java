@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -134,7 +135,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
             }
 
             if (result.equals("ERROR")){
-                Toast toast = Toast.makeText(MainActivity.this, "Erro ao atualizar os dados", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(MainActivity.this, MainActivity.this.getResources().getString(
+                        MainActivity.this.getResources().getIdentifier(
+                                "com.fabio.jogadorlesionado:string/data_error", null, null)), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }
         }
