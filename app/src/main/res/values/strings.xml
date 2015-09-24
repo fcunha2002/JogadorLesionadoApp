@@ -29,6 +29,7 @@
     <string name="calf_shin_injury">Calf Shin Injury</string>
     <string name="broken_nose">Broken Nose</string>
     <string name="acl_knee_ligament">ACL Knee Ligament Injury</string>
+    <string name="mcl_knee_ligament">MCL Knee Ligament Injury</string>
     <string name="back_injury">Back Injury</string>
     <string name="knock">Knock</string>
 
@@ -43,4 +44,7 @@
     <string name="senegal">Senegal</string>
     <string name="cote_d_ivoire">Côte d\'Ivoire</string>
     <string name="ireland">Ireland</string>
+    <string name="belgium">Belgium</string>
+    <string name="ghana">Ghana</string>
+    <string name="morocco">Morocco</string>
 </resources>

@@ -29,6 +29,7 @@
     <string name="calf_shin_injury">Lesão na Panturrilha/Canela</string>
     <string name="broken_nose">Fratura do Nariz</string>
     <string name="acl_knee_ligament">Lesão no Lig. Cruzado Anterior</string>
+    <string name="mcl_knee_ligament">Lesão no Lig. Colateral Medial</string>
     <string name="back_injury">Lesão nas Costas</string>
     <string name="knock">Pancada</string>
 
@@ -43,4 +44,7 @@
     <string name="senegal">Senegal</string>
     <string name="cote_d_ivoire">Costa do Marfim</string>
     <string name="ireland">Irlanda</string>
+    <string name="belgium">Bélgica</string>
+    <string name="ghana">Gana</string>
+    <string name="morocco">Marrocos</string>
 </resources>
