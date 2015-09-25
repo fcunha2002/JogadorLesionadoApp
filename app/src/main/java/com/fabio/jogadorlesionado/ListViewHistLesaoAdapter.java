@@ -69,7 +69,7 @@ public class ListViewHistLesaoAdapter extends BaseAdapter {
 
         periodo.setText(lesao.getPeriodoLesao());
         long tempo = lesao.getTempoLesao();
-        afastamento.setText(tempo + " " + "dias");
+        afastamento.setText(tempo + " " + _context.getResources().getString(R.string.days));
 
         if (tempo<=15){
             linha.setBackgroundColor(_context.getResources().getColor(R.color.leve));

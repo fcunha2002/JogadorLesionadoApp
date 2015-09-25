@@ -10,6 +10,7 @@
     <string name="injured_since">lesionado desde</string>
     <string name="injury_history">HISTÓRICO DE LESÕES</string>
     <string name="injured_players">JOGADORES LESIONADOS</string>
+    <string name="days">dias</string>
 
     <string name="goalkeeper">Goleiro</string>
     <string name="defender">Zagueiro</string>

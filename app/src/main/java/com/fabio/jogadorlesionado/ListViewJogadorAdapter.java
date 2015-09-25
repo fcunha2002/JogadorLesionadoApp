@@ -61,8 +61,9 @@ public class ListViewJogadorAdapter extends BaseAdapter {
                 _context.getResources().getIdentifier(
                         "com.fabio.jogadorlesionado:string/" + lesionado.getPosicao().getStringVal(), null, null)));
         lesionadoDesde.setText(_context.getResources().getString(R.string.injured_since) + " " +
-                                lesionado.getLesaoAtual().getDataInicioFormatada() + " " +
-                                "(" + lesionado.getLesaoAtual().getTempoLesao() + " dias)");
+                                lesionado.getLesaoAtual().getDataInicioFormatada() + "   " +
+                                "(" + lesionado.getLesaoAtual().getTempoLesao() + " " +
+                                _context.getResources().getString(R.string.days) + ")");
 
         return convertView;
     }

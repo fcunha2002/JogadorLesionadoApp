@@ -10,6 +10,7 @@
     <string name="injured_since">injured since</string>
     <string name="injury_history">INJURY HISTORY</string>
     <string name="injured_players">INJURED PLAYERS</string>
+    <string name="days">days</string>
 
     <string name="goalkeeper">Goalkeeper</string>
     <string name="defender">Defender</string>
