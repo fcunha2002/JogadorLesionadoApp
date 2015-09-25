@@ -100,6 +100,18 @@ public class LesaoDAO {
         return lesoes;
     }
 
+    public Lesao getById(long id, Jogador jogador){
+        Cursor cursor = db.query(TABELA, columns, "_id=" + id, null, null, null, null);
+
+        cursor.moveToFirst();
+        if (cursor.getCount()>0)
+        {
+            return cursorToLesao(cursor, jogador);
+        }else{
+            return null;
+        }
+    }
+
     public boolean exists(long id){
         Cursor cursor = db.query(TABELA, id_column, "_id=" + id, null, null, null, null);
 
@@ -144,9 +156,7 @@ public class LesaoDAO {
             e.printStackTrace();
         }
 
-        JogadorDAO jogadorDAO = new JogadorDAO(helper.get_context());
-        jogadorDAO.openRead();
-        lesao.setJogador(jogadorDAO.getById(cursor.getInt(1)));
+        lesao.setJogador(jogador);
 
         return lesao;
     }

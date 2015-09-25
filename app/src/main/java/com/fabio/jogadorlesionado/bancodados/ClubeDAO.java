@@ -85,7 +85,7 @@ public class ClubeDAO {
         JogadorDAO jogadorDAO = new JogadorDAO(helper.get_context());
         jogadorDAO.openRead();
         for (Clube clube : clubes) {
-            clube.getLesionados().addAll(jogadorDAO.getAll(clube));
+            clube.getLesionados().addAll(jogadorDAO.getAllInjuried(clube));
         }
         jogadorDAO.close();
 

@@ -21,7 +21,8 @@ import java.util.ArrayList;
  */
 public class JogadorDAO {
     private SQLiteDatabase db;
-    private String[] columns = {"_id", "nome_completo", "nome_guerra", "foto", "posicao", "data_nascimento", "id_pais"};
+    private String[] columns = {"_id", "nome_completo", "nome_guerra", "foto", "posicao",
+                                "data_nascimento", "id_clube", "id_pais"};
     private String[] id_column = {"_id"};
     private Helper helper;
     private String TABELA = "jogador";
@@ -93,7 +94,30 @@ public class JogadorDAO {
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
         {
-            jogadores.add(cursorToJogador(cursor, clube));
+            jogadores.add(cursorToJogador(cursor, clube, false));
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return jogadores;
+    }
+
+    public ArrayList<Jogador> getAllInjuried(Clube clube)
+    {
+        ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+
+        Cursor cursor;
+        cursor = db.rawQuery("SELECT * " +
+                "FROM jogador j " +
+                "INNER JOIN lesao l ON j._id = l.id_jogador " +
+                "WHERE ((l.data_fim IS NULL) " +
+                "OR (l.data_fim >= DATE())) " +
+                "AND j.id_clube=" + clube.getId(), null);
+
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast())
+        {
+            jogadores.add(cursorToJogador(cursor, clube, true));
             cursor.moveToNext();
         }
 
@@ -121,13 +145,13 @@ public class JogadorDAO {
         cursor.moveToFirst();
         if (cursor.getCount()>0)
         {
-            return cursorToJogador(cursor, null);
+            return cursorToJogador(cursor, null, false);
         }else{
             return null;
         }
     }
 
-    private Jogador cursorToJogador(Cursor cursor, Clube clube)
+    private Jogador cursorToJogador(Cursor cursor, Clube clube, boolean lesaoAtual)
     {
         Jogador jogador = new Jogador();
 
@@ -149,7 +173,15 @@ public class JogadorDAO {
 
         PaisDAO paisDAO = new PaisDAO(helper.get_context());
         paisDAO.openRead();
-        jogador.setPais(paisDAO.getById(cursor.getInt(6)));
+        jogador.setPais(paisDAO.getById(cursor.getInt(7)));
+        paisDAO.close();
+
+        if (lesaoAtual){
+            LesaoDAO lesaoDAO = new LesaoDAO(helper.get_context());
+            lesaoDAO.openRead();
+            jogador.setLesaoAtual(lesaoDAO.getById(cursor.getInt(8), jogador));
+            lesaoDAO.close();
+        }
 
         return jogador;
     }

@@ -11,9 +11,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.fabio.jogadorlesionado.bancodados.JogadorDAO;
 import com.fabio.jogadorlesionado.bancodados.LesaoDAO;
-import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Jogador;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
