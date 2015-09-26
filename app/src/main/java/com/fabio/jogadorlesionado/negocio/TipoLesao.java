@@ -19,7 +19,9 @@ public enum TipoLesao {
     ACL_KNEE_LIGAMENT (13, "acl_knee_ligament"),
     MCL_KNEE_LIGAMENT (14, "mcl_knee_ligament"),
     BACK_INJURY (15, "back_injury"),
-    KNOCK (16, "knock");
+    KNOCK (16, "knock"),
+    VIRUS (17, "virus"),
+    HIP_THIGH_INJURY (18, "hip_thigh_injury");
 
     private long id;
     private String stringVal;

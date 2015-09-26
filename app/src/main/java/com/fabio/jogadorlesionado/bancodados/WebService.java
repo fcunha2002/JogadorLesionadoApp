@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class WebService {
 
-    String data = "2015-01-01 18:18:00";
+    String data = "2015-09-25 00:00:00";
 
     public boolean atualizarValores(Context context){
         HttpParams httpParams = new BasicHttpParams();

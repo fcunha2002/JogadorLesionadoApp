@@ -33,6 +33,8 @@
     <string name="mcl_knee_ligament">MCL Knee Ligament Injury</string>
     <string name="back_injury">Back Injury</string>
     <string name="knock">Knock</string>
+    <string name="virus">Virus</string>
+    <string name="hip_thigh_injury">Hip/Thigh Injury</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brazil</string>

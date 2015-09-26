@@ -33,6 +33,8 @@
     <string name="mcl_knee_ligament">Lesão no Lig. Colateral Medial</string>
     <string name="back_injury">Lesão nas Costas</string>
     <string name="knock">Pancada</string>
+    <string name="virus">Vírus/Resfriado</string>
+    <string name="hip_thigh_injury">Lesão na Coxa/Quadril</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brasil</string>
