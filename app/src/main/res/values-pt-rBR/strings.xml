@@ -50,4 +50,9 @@
     <string name="belgium">Bélgica</string>
     <string name="ghana">Gana</string>
     <string name="morocco">Marrocos</string>
+    <string name="south_africa">África do Sul</string>
+    <string name="costa_rica">Costa Rica</string>
+    <string name="bosnia_herzegovina">Bósnia Herzegovina</string>
+
+
 </resources>
