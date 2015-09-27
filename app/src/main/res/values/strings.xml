@@ -36,6 +36,14 @@
     <string name="virus">Virus</string>
     <string name="hip_thigh_injury">Hip/Thigh Injury</string>
     <string name="broken_toe">Broken Toe</string>
+    <string name="pubalgia">Pubalgia</string>
+    <string name="groin_pelvis_injury">Groin/Pelvis Injury</string>
+    <string name="neck_injury">Neck Injury</string>
+    <string name="broken_leg">Broken Leg</string>
+    <string name="metatarsal_fracture">Metatarsal Fracture</string>
+    <string name="rib_injury">Rib Injury</string>
+    <string name="sprained_ankle">Sprained Ankle</string>
+    <string name="head_injury">Head Injury</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brazil</string>

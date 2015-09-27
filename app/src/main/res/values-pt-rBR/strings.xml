@@ -36,6 +36,14 @@
     <string name="virus">Vírus/Resfriado</string>
     <string name="hip_thigh_injury">Lesão na Coxa/Quadril</string>
     <string name="broken_toe">Fratura Dedo do Pé</string>
+    <string name="pubalgia">Pubalgia</string>
+    <string name="groin_pelvis_injury">Lesão na Virilha/Pelvis</string>
+    <string name="neck_injury">Lesão no Pescoço</string>
+    <string name="broken_leg">Fratura na Perna</string>
+    <string name="metatarsal_fracture">Fratura do Metatarso</string>
+    <string name="rib_injury">Lesão nas Costelas</string>
+    <string name="sprained_ankle">Torção no Tornozelo</string>
+    <string name="head_injury">Lesão na Cabeça</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brasil</string>
