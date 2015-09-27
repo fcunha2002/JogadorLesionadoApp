@@ -43,11 +43,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = inflaInflater.inflate(R.layout.layout_pais, parentView, false);
         }
 
-        // Get grouprow.xml file elements and set values
         ((TextView) convertView.findViewById(R.id.txvNomePais)).setText(
                 _context.getResources().getString(
                         _context.getResources().getIdentifier(
                                 "com.fabio.jogadorlesionado:string/" + pais.getNome(), null, null)));
+
+        ((TextView) convertView.findViewById(R.id.txvTotalLesionadosPais)).setText("(" + pais.getTotalLesionados() + ")");
 
         ImageView image=(ImageView)convertView.findViewById(R.id.imgBandeira);
 

@@ -73,16 +73,44 @@ public class PaisDAO {
             cursor = db.query(TABELA, columns, null, null, null, null, null);
         }
 
+        Pais pais;
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
         {
-            paises.add(cursorToPais(cursor));
+            pais = cursorToPais(cursor);
+
+            if (controle){
+                pais.setTotalLesionados(getTotalLesionados(pais.getId()));
+            }
+
+            paises.add(pais);
             cursor.moveToNext();
         }
 
         cursor.close();
 
         return paises;
+    }
+
+    public int getTotalLesionados(long id_pais){
+        int ret;
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT COUNT(1) " +
+                "FROM jogador j " +
+                "INNER JOIN lesao l ON j._id = l.id_jogador " +
+                "INNER JOIN clube c ON c._id = j.id_clube " +
+                "WHERE ((l.data_fim IS NULL) OR (l.data_fim >= DATE())) " +
+                "AND c.id_pais=" + id_pais, null);
+
+        cursor.moveToFirst();
+
+        if (cursor.getCount()>0)
+        {ret = cursor.getInt(0);}
+        else{ret = 0;}
+
+        cursor.close();
+        return ret;
     }
 
     public boolean exists(long id){

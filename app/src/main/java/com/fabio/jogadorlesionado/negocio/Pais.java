@@ -12,6 +12,7 @@ public class Pais implements Serializable {
     private String bandeira; //nome do arquivo que possui o figura da bandeira. padrão pX onde X é o id do país
     private boolean controle; //booleano que diz se o país é também acompanhado pelo app
     private ArrayList<Clube> clubes = new ArrayList<Clube>(); //lista de clubes do país
+    private int totalLesionados; //Total de jogadores lesionados neste momento
 
     public long getId() {
         return id;
@@ -51,6 +52,14 @@ public class Pais implements Serializable {
 
     public void setControle(boolean controle) {
         this.controle = controle;
+    }
+
+    public int getTotalLesionados() {
+        return totalLesionados;
+    }
+
+    public void setTotalLesionados(int totalLesionados) {
+        this.totalLesionados = totalLesionados;
     }
 
     @Override
