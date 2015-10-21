@@ -43,10 +43,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
-
-//        PaisFragment paisFragment = new PaisFragment();
-//
-//        getSupportFragmentManager().beginTransaction().add(R.id.container, paisFragment).commit();
+        mNavigationDrawerFragment.closeDrawer();
 
         new MainActivity.MainTask().execute();
     }
