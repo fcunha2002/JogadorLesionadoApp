@@ -29,9 +29,10 @@ public enum TipoLesao {
     NECK_INJURY (23, "neck_injury"),
     PUBALGIA (24, "pubalgia"),
     RIB_INJURY (25, "rib_injury"),
-    SPRAINED_ANKLE (26, "sprained_ankle"),
-    THIGH_MUSCLE_STRAIN (27, "thigh_muscle_strain"),
-    VIRUS (28, "virus");
+    SHOULDER_INJURY (26, "shoulder_injury"),
+    SPRAINED_ANKLE (27, "sprained_ankle"),
+    THIGH_MUSCLE_STRAIN (28, "thigh_muscle_strain"),
+    VIRUS (29, "virus");
 
     private long id;
     private String stringVal;

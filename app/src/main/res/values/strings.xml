@@ -45,6 +45,7 @@
     <string name="sprained_ankle">Sprained Ankle</string>
     <string name="head_injury">Head Injury</string>
     <string name="concussion">Concussion</string>
+    <string name="shoulder_injury">Shoulder Injury</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brazil</string>
@@ -63,4 +64,6 @@
     <string name="south_africa">South Africa</string>
     <string name="costa_rica">Costa Rica</string>
     <string name="bosnia_herzegovina">Bosnia Herzegovina</string>
+    <string name="colombia">Colombia</string>
+    <string name="wales">Wales</string>
 </resources>

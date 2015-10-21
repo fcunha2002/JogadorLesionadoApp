@@ -45,6 +45,7 @@
     <string name="sprained_ankle">Torção no Tornozelo</string>
     <string name="head_injury">Lesão na Cabeça</string>
     <string name="concussion">Concussão Cerebral</string>
+    <string name="shoulder_injury">Lesão no Ombro</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brasil</string>
@@ -63,4 +64,6 @@
     <string name="south_africa">África do Sul</string>
     <string name="costa_rica">Costa Rica</string>
     <string name="bosnia_herzegovina">Bósnia Herzegovina</string>
+    <string name="colombia">Colômbia</string>
+    <string name="wales">País de Gales</string>
 </resources>
