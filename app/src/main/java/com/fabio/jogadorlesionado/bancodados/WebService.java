@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class WebService {
 
-    String data = "2015-09-25 00:00:00";
+//    String data = "2015-09-25 00:00:00";
 
     public boolean atualizarValores(Context context){
         HttpParams httpParams = new BasicHttpParams();
@@ -45,11 +45,17 @@ public class WebService {
         HttpClient httpClient = new DefaultHttpClient();
         String server = "http://injuredplayer.esy.es/jlweb/";
 
+        AtualizacaoDAO atualizacaoDAO = new AtualizacaoDAO(context);
+        atualizacaoDAO.openRead();
+        String data = atualizacaoDAO.getData();
+        data = data + " 00:00:00";
+        atualizacaoDAO.close();
+
         try {
-            atualizaPaises(httpClient, server, context);
-            atualizaClubes(httpClient, server, context);
-            atualizaJogadores(httpClient, server, context);
-            atualizaLesoes(httpClient, server, context);
+            atualizaPaises(httpClient, server, context, data);
+            atualizaClubes(httpClient, server, context, data);
+            atualizaJogadores(httpClient, server, context, data);
+            atualizaLesoes(httpClient, server, context, data);
         } catch (Exception e) {
             //Erro ao buscar dados
             return false;
@@ -58,7 +64,7 @@ public class WebService {
         return true;
     }
 
-    private void atualizaPaises(HttpClient httpClient, String server, Context context) throws IOException, JSONException {
+    private void atualizaPaises(HttpClient httpClient, String server, Context context, String data) throws IOException, JSONException {
         ArrayList<Pais> paises = new ArrayList<Pais>();
 
         String url = server + "getPais.php";
@@ -82,18 +88,19 @@ public class WebService {
             paises.add(montaPais(jObject));
         }
 
-        PaisDAO paisDAO = new PaisDAO(context);
-        paisDAO.openWrite();
+        if (paises.size() > 0) {
+            PaisDAO paisDAO = new PaisDAO(context);
+            paisDAO.openWrite();
 
-        for (Pais pais : paises) {
-            if (paisDAO.exists(pais.getId())){
-                paisDAO.update(pais);
-            }else{
-                paisDAO.insert(pais);
+            for (Pais pais : paises) {
+                if (paisDAO.exists(pais.getId())) {
+                    paisDAO.update(pais);
+                } else {
+                    paisDAO.insert(pais);
+                }
             }
+            paisDAO.close();
         }
-
-        paisDAO.close();
     }
 
     private Pais montaPais(JSONObject jObject){
@@ -111,7 +118,7 @@ public class WebService {
         return pais;
     }
 
-    private void atualizaClubes(HttpClient httpClient, String server, Context context) throws IOException, JSONException {
+    private void atualizaClubes(HttpClient httpClient, String server, Context context, String data) throws IOException, JSONException {
         ArrayList<Clube> clubes = new ArrayList<Clube>();
 
         String url = server + "getClube.php";
@@ -135,18 +142,19 @@ public class WebService {
             clubes.add(montaClube(jObject));
         }
 
-        ClubeDAO clubeDAO = new ClubeDAO(context);
-        clubeDAO.openWrite();
+        if (clubes.size() > 0) {
+            ClubeDAO clubeDAO = new ClubeDAO(context);
+            clubeDAO.openWrite();
 
-        for (Clube clube : clubes) {
-            if (clubeDAO.exists(clube.getId())){
-                clubeDAO.update(clube);
-            }else{
-                clubeDAO.insert(clube);
+            for (Clube clube : clubes) {
+                if (clubeDAO.exists(clube.getId())) {
+                    clubeDAO.update(clube);
+                } else {
+                    clubeDAO.insert(clube);
+                }
             }
+            clubeDAO.close();
         }
-
-        clubeDAO.close();
     }
 
     private Clube montaClube(JSONObject jObject){
@@ -168,7 +176,7 @@ public class WebService {
         return clube;
     }
 
-    private void atualizaJogadores(HttpClient httpClient, String server, Context context) throws IOException, JSONException {
+    private void atualizaJogadores(HttpClient httpClient, String server, Context context, String data) throws IOException, JSONException {
         ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 
         String url = server + "getJogador.php";
@@ -192,18 +200,19 @@ public class WebService {
             jogadores.add(montaJogador(jObject));
         }
 
-        JogadorDAO jogadorDAO = new JogadorDAO(context);
-        jogadorDAO.openWrite();
+        if (jogadores.size() > 0) {
+            JogadorDAO jogadorDAO = new JogadorDAO(context);
+            jogadorDAO.openWrite();
 
-        for (Jogador jogador : jogadores) {
-            if (jogadorDAO.exists(jogador.getId())){
-                jogadorDAO.update(jogador);
-            }else{
-                jogadorDAO.insert(jogador);
+            for (Jogador jogador : jogadores) {
+                if (jogadorDAO.exists(jogador.getId())) {
+                    jogadorDAO.update(jogador);
+                } else {
+                    jogadorDAO.insert(jogador);
+                }
             }
+            jogadorDAO.close();
         }
-
-        jogadorDAO.close();
     }
 
     private Jogador montaJogador(JSONObject jObject){
@@ -238,7 +247,7 @@ public class WebService {
         return jogador;
     }
 
-    private void atualizaLesoes(HttpClient httpClient, String server, Context context) throws IOException, JSONException {
+    private void atualizaLesoes(HttpClient httpClient, String server, Context context, String data) throws IOException, JSONException {
         ArrayList<Lesao> lesoes = new ArrayList<Lesao>();
 
         String url = server + "getLesao.php";
@@ -262,18 +271,19 @@ public class WebService {
             lesoes.add(montaLesao(jObject));
         }
 
-        LesaoDAO lesaoDAO = new LesaoDAO(context);
-        lesaoDAO.openWrite();
+        if (lesoes.size() > 0) {
+            LesaoDAO lesaoDAO = new LesaoDAO(context);
+            lesaoDAO.openWrite();
 
-        for (Lesao lesao : lesoes) {
-            if (lesaoDAO.exists(lesao.getId())){
-                lesaoDAO.update(lesao);
-            }else{
-                lesaoDAO.insert(lesao);
+            for (Lesao lesao : lesoes) {
+                if (lesaoDAO.exists(lesao.getId())) {
+                    lesaoDAO.update(lesao);
+                } else {
+                    lesaoDAO.insert(lesao);
+                }
             }
+            lesaoDAO.close();
         }
-
-        lesaoDAO.close();
     }
 
     private Lesao montaLesao(JSONObject jObject){

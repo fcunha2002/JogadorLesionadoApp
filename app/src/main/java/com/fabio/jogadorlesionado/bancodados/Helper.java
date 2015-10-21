@@ -42,6 +42,8 @@ public class Helper extends SQLiteOpenHelper {
                 "tipo varchar(20) NOT NULL, descricao varchar(40) DEFAULT NULL, " +
                 "FOREIGN KEY(id_jogador) REFERENCES jogador(_id));");
 
+        db.execSQL("CREATE TABLE atualizacao (data date);");
+        db.execSQL("INSERT INTO atualizacao (data) VALUES ('2015-01-01');");
 
     }
 

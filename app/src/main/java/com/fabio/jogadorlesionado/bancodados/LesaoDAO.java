@@ -75,6 +75,8 @@ public class LesaoDAO {
         values.put("data_inicio", formatter.format(lesao.getDataInicio()));
         if (lesao.getDataFim() != null) {
             values.put("data_fim", formatter.format(lesao.getDataFim()));
+        } else {
+            values.put("data_fim", "null");
         }
 
         long updateId = db.update(TABELA, values, "_id=" + lesao.getId(), null);

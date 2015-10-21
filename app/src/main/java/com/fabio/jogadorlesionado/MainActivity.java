@@ -3,6 +3,7 @@ package com.fabio.jogadorlesionado;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,9 +12,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.fabio.jogadorlesionado.bancodados.AtualizacaoDAO;
 import com.fabio.jogadorlesionado.bancodados.WebService;
 import com.fabio.jogadorlesionado.negocio.Clube;
 import com.fabio.jogadorlesionado.negocio.Jogador;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerCallbacks {
@@ -38,9 +44,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
 
-        PaisFragment paisFragment = new PaisFragment();
-
-        getSupportFragmentManager().beginTransaction().add(R.id.container, paisFragment).commit();
+//        PaisFragment paisFragment = new PaisFragment();
+//
+//        getSupportFragmentManager().beginTransaction().add(R.id.container, paisFragment).commit();
 
         new MainActivity.MainTask().execute();
     }
@@ -140,6 +146,19 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
                                 "com.fabio.jogadorlesionado:string/data_error", null, null)), Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
+            }
+
+            if (result.equals("SUCCESS")){
+                AtualizacaoDAO atualizacaoDAO = new AtualizacaoDAO(MainActivity.this);
+                atualizacaoDAO.openWrite();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                long data = System.currentTimeMillis();
+                String dataString = dateFormat.format(data);
+                atualizacaoDAO.update(dataString);
+                atualizacaoDAO.close();
+
+                PaisFragment paisFragment = new PaisFragment();
+                getSupportFragmentManager().beginTransaction().add(R.id.container, paisFragment).commit();
             }
         }
     }
