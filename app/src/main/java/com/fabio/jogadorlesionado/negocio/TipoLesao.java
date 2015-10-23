@@ -32,7 +32,8 @@ public enum TipoLesao {
     SHOULDER_INJURY (26, "shoulder_injury"),
     SPRAINED_ANKLE (27, "sprained_ankle"),
     THIGH_MUSCLE_STRAIN (28, "thigh_muscle_strain"),
-    VIRUS (29, "virus");
+    VIRAL_MENINGITIS (29, "viral_meningitis"),
+    VIRUS (30, "virus");
 
     private long id;
     private String stringVal;
