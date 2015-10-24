@@ -47,6 +47,7 @@
     <string name="concussion">Concussão Cerebral</string>
     <string name="shoulder_injury">Lesão no Ombro</string>
     <string name="viral_meningitis">Meningite Viral</string>
+    <string name="broken_hand">Fratura na Mão</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brasil</string>
@@ -69,4 +70,5 @@
     <string name="wales">País de Gales</string>
     <string name="serbia">Sérvia</string>
     <string name="croatia">Croácia</string>
+    <string name="poland">Polônia</string>
 </resources>

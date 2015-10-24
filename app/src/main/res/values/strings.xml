@@ -47,6 +47,7 @@
     <string name="concussion">Concussion</string>
     <string name="shoulder_injury">Shoulder Injury</string>
     <string name="viral_meningitis">Viral Meningitis</string>
+    <string name="broken_hand">Broken Hand</string>
 
     <string name="argentina">Argentina</string>
     <string name="brazil">Brazil</string>
@@ -69,4 +70,5 @@
     <string name="wales">Wales</string>
     <string name="serbia">Serbia</string>
     <string name="croatia">Croatia</string>
+    <string name="poland">Poland</string>
 </resources>
